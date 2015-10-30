@@ -3,9 +3,13 @@
  */
 package com.iam_vip.fetch_novel.biz;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import com.iam_vip.fetch_novel.c.IBrowserUserAgent;
 
@@ -25,10 +29,10 @@ public abstract class Novel implements IBrowserUserAgent {
 		// TODO Auto-generated constructor stub
 	}
 
-	protected String url;
-	protected String base_url;
+	protected String url = "";
+	protected String base_url = "";
 
-	String path;
+	File txtFile;
 
 	private FileWriter writer;
 
@@ -39,7 +43,7 @@ public abstract class Novel implements IBrowserUserAgent {
 	protected void write(String text) throws Exception {
 
 		if (writer == null)
-			writer = new FileWriter(path, true);
+			writer = new FileWriter(txtFile, true);
 
 		writer.write(text);
 
@@ -54,6 +58,10 @@ public abstract class Novel implements IBrowserUserAgent {
 		return ArrUserAgent[index];
 	}
 
+	protected Document doc() throws IOException {
+		return Jsoup.connect(url).timeout(TIMEOUT).header("User-Agent", getUserAgent()).get();
+	}
+
 	protected void end() throws IOException {
 		writer.flush();
 		writer.close();
@@ -61,7 +69,7 @@ public abstract class Novel implements IBrowserUserAgent {
 
 	protected void calcBaseUrl(String href) {
 
-		if (base_url == null && href.startsWith("http")) {
+		if ("".equals(base_url) && !href.startsWith("http")) {
 
 			String[] arr = href.split("/");
 			String[] urlArr = url.split("/");
@@ -73,8 +81,6 @@ public abstract class Novel implements IBrowserUserAgent {
 			}
 
 			base_url = buf.toString();
-		} else {
-			base_url = "";
 		}
 	}
 

@@ -5,7 +5,6 @@ package com.iam_vip.fetch_novel.biz.children;
 
 import java.io.IOException;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -42,7 +41,9 @@ public class _23wx extends Novel {
 
 			do {
 
-				Document document = Jsoup.connect(super.url).timeout(TIMEOUT).get();
+				Document document = super.doc();
+				System.out.println(document.title() + "   " + super.url);
+				super.write("\r\n------------------------------------\r\n---   " + document.title() + " ---\r\n--- " + super.url + " ---\r\n------------------------------------\r\n\r\n");
 
 				Element novel = document.getElementById("contents");
 				StringBuffer buffer = new StringBuffer(novel.html());

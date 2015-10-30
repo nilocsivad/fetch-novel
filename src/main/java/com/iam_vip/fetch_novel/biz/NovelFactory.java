@@ -3,6 +3,7 @@
  */
 package com.iam_vip.fetch_novel.biz;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,15 +28,25 @@ public final class NovelFactory {
 	private NovelFactory() {
 	}
 
+	private static File folder;
+
+	public static void setFolder(String folder) {
+		
+		NovelFactory.folder = new File(folder);
+		
+		if (!NovelFactory.folder.exists())
+			NovelFactory.folder.mkdirs();
+	}
+
 	public static Novel createNovel(String url, String path) throws Exception {
-		
+
 		String key = getSiteKey(url);
-		
+
 		Class<?> cls = URL2CLASS.get(key);
 		Novel instance = (Novel) cls.newInstance();
-		
+
 		instance.url = url;
-		instance.path = path;
+		instance.txtFile = new File(folder, path);
 		return instance;
 	}
 
