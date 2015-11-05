@@ -29,7 +29,8 @@ public class SplitFileApp {
 
 	public static void main(String[] args) throws IOException {
 
-		split4folder("D:\\fetch-novel\\");
+		// split4folder("D:\\fetch-novel\\");
+		split("D:\\fetch-novel\\***.txt");
 	}
 
 	public static void split4folder(String folder) throws IOException {
@@ -72,8 +73,12 @@ public class SplitFileApp {
 
 		String fn = fname(file.getName());
 		File dir = new File(file.getParentFile(), fn);
-		if (!dir.exists())
+		if (dir.isFile() && dir.exists()) {
+			dir = new File(dir.getParentFile(), "d" + fn);
 			dir.mkdirs();
+		} else if (!dir.exists()) {
+			dir.mkdirs();
+		}
 
 		String suffix = suffix(file.getName());
 		String fmt = "%s.%d%s";

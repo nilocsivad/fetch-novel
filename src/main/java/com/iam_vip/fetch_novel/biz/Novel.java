@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -59,7 +60,10 @@ public abstract class Novel implements IBrowserUserAgent {
 	}
 
 	protected Document doc() throws IOException {
-		return Jsoup.connect(url).timeout(TIMEOUT).header("User-Agent", getUserAgent()).get();
+		Connection connection = Jsoup.connect(url).timeout(TIMEOUT).header("User-Agent", getUserAgent());
+		if (connection.execute().statusCode() != 200)
+			return null;
+		return connection.get();
 	}
 
 	protected void end() throws IOException {

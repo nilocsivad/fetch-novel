@@ -17,8 +17,28 @@ public class FetchNovelApp {
 
 		NovelFactory.setFolder("D:\\fetch-novel\\");
 
-		NovelFactory.createNovel("", "").fetch();
+		NovelFactory.createNovel("http://www.23wx.com/html/***.html", "***.txt").fetch();
 
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
