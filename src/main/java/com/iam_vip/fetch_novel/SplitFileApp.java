@@ -27,86 +27,87 @@ public class SplitFileApp {
 	public SplitFileApp() {
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main( String[] args ) throws IOException {
 
-		// split4folder("D:\\fetch-novel\\");
-		split("D:\\fetch-novel\\***.txt");
+		// split4folder( "D:\\fetch-novel\\" );
+		split( "D:\\fetch-novel\\***.txt" );
 	}
 
-	public static void split4folder(String folder) throws IOException {
+	public static void split4folder( String folder ) throws IOException {
 
-		File dir = new File(folder);
-		File[] files = dir.listFiles(f -> f.isFile());
-		split(files);
+		File dir = new File( folder );
+		File[] files = dir.listFiles( f -> f.isFile() );
+		split( files );
 	}
 
-	public static void split(String... files) throws IOException {
+	public static void split( String... files ) throws IOException {
 
-		List<File> list = new ArrayList<>(files.length);
-		for (String file : files)
-			list.add(new File(file));
+		List< File > list = new ArrayList< >( files.length );
+		for ( String file : files )
+			list.add( new File( file ) );
 
-		split(list.toArray(new File[0]));
+		split( list.toArray( new File[ 0 ] ) );
 	}
 
-	public static void split(File... files) throws IOException {
+	public static void split( File... files ) throws IOException {
 
-		for (File file : files)
-			doSplit(file);
+		for ( File file : files )
+			doSplit( file );
 	}
 
-	private static String suffix(String fName) {
-		File file = new File(fName);
-		int idx = file.getName().lastIndexOf(".");
-		String suffix = idx > 0 ? (file.getName().substring(idx)) : ".txt";
+	private static String suffix( String fName ) {
+		File file = new File( fName );
+		int idx = file.getName().lastIndexOf( "." );
+		String suffix = idx > 0 ? ( file.getName().substring( idx ) ) : ".txt";
 		return suffix;
 	}
 
-	private static String fname(String fName) {
-		File file = new File(fName);
-		int idx = file.getName().lastIndexOf(".");
-		String suffix = idx > 0 ? (file.getName().substring(0, idx)) : fName;
+	private static String fname( String fName ) {
+		File file = new File( fName );
+		int idx = file.getName().lastIndexOf( "." );
+		String suffix = idx > 0 ? ( file.getName().substring( 0, idx ) ) : fName;
 		return suffix;
 	}
 
-	private static void doSplit(File file) throws IOException {
+	private static void doSplit( File file ) throws IOException {
 
-		String fn = fname(file.getName());
-		File dir = new File(file.getParentFile(), fn);
-		if (dir.isFile() && dir.exists()) {
-			dir = new File(dir.getParentFile(), "d" + fn);
+		String fn = fname( file.getName() );
+		File dir = new File( file.getParentFile(), fn );
+		if ( dir.isFile() && dir.exists() ) {
+			dir = new File( dir.getParentFile(), "d" + fn );
 			dir.mkdirs();
-		} else if (!dir.exists()) {
+		}
+		else if ( !dir.exists() ) {
 			dir.mkdirs();
 		}
 
-		String suffix = suffix(file.getName());
+		String suffix = suffix( file.getName() );
 		String fmt = "%s.%d%s";
 
-		BufferedReader reader = new BufferedReader(new FileReader(file));
+		BufferedReader reader = new BufferedReader( new FileReader( file ) );
 
 		int index = 10001;
 		long len = 0;
 		String data = null;
-		File outFile = new File(dir, String.format(fmt, fn, index, suffix));
-		BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
+		File outFile = new File( dir, String.format( fmt, fn, index, suffix ) );
+		BufferedWriter writer = new BufferedWriter( new FileWriter( outFile ) );
 
-		System.out.println(outFile.getAbsolutePath());
+		System.out.println( outFile.getAbsolutePath() );
 
-		while ((data = reader.readLine()) != null) {
-			if (len >= MAX_KB) {
+		while ( ( data = reader.readLine() ) != null ) {
+			if ( len >= MAX_KB ) {
 				writer.flush();
 				writer.close();
-				index++;
+				index ++;
 				len = 0;
 
-				outFile = new File(dir, String.format(fmt, fn, index, suffix));
-				writer = new BufferedWriter(new FileWriter(outFile));
+				outFile = new File( dir, String.format( fmt, fn, index, suffix ) );
+				writer = new BufferedWriter( new FileWriter( outFile ) );
 
-				System.out.println(outFile.getAbsolutePath());
+				System.out.println( outFile.getAbsolutePath() );
 			}
-			writer.write(data);
-			writer.write(WRAP_LINE);
+			writer.write( data );
+			writer.write( WRAP_LINE );
 			len += data.getBytes().length + WRAP_LEN;
 			data = null;
 		}
