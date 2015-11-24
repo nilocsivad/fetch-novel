@@ -43,6 +43,8 @@ public class _23wx extends Novel {
 		
 		try {
 			
+			super.newWriter( super.outFile.getName() + ".txt" );
+			
 			do {
 				
 				Document document = this.fetchNovel();
@@ -148,6 +150,7 @@ public class _23wx extends Novel {
 				templateDoc.title( document.title() );
 				
 				templateDoc.getElementById( "title" ).text( document.title() );
+				templateDoc.getElementById( "url" ).text( super.url );
 				
 				Element box = templateDoc.getElementById( "wrap-box" );
 				for ( String line : arr ) {

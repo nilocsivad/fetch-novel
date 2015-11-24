@@ -32,10 +32,10 @@ public abstract class Novel implements IBrowserUserAgent {
 	protected Novel() {}
 	
 	
-	protected String	url			= "";
+	protected String	url	= "";
 	protected String	base_url;
-									
-	File				outFile;
+						
+	protected File		outFile;
 						
 	private FileWriter	writer;
 						

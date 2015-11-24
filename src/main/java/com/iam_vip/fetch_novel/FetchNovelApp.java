@@ -14,10 +14,10 @@ public class FetchNovelApp {
 	
 	public static void main( String[] args ) throws Exception {
 		
-		NovelFactory.setFolder( "D:\\fetch-novel\\娇妻如云" );
+		NovelFactory.setFolder( "D:\\fetch-novel\\" );
 		
-		NovelFactory.createNovel( "http://www.23wx.com/html/0/244/9841517.html", "" ).fetch2html();
-		// newThead2Fetch( new KV( "http://www.***.com/html/***.html", "***.txt" ) );
+		// NovelFactory.createNovel( "", "" ).fetch2html();
+		newThead2Fetch( new KV( "", "" ) );
 		
 	}
 	
@@ -30,7 +30,7 @@ public class FetchNovelApp {
 				public void run() {
 					
 					try {
-						NovelFactory.createNovel( kv.url, kv.name + ".txt" ).fetch();
+						NovelFactory.createNovel( kv.url, kv.name ).fetch2html();
 					}
 					catch ( Exception e ) {
 						e.printStackTrace();
