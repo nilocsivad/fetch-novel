@@ -17,7 +17,7 @@ public class FetchNovelApp {
 		NovelFactory.setFolder( "D:\\fetch-novel\\" );
 		
 		// NovelFactory.createNovel( "", "" ).fetch2html();
-		newThead2Fetch( new KV( "", "" ) );
+		newThead2Fetch( new KV( "http://www.23wx.com/html/0/244/10093798.html", "娇妻如云" ) );
 		
 	}
 	
