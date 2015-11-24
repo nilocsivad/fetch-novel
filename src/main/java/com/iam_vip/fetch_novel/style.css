@@ -1,0 +1,60 @@
+body {
+	font: 17px 微软雅黑, 宋体, Verdana, Arial, sans-serif;
+	color: #121212;
+	font-weight: 100;
+}
+
+.op-line {
+	line-height: 150%;
+	margin: 15px 0;
+}
+
+.sz-line, .color-line {
+	line-height: 120%;
+	margin: 2px 0;
+}
+
+.sz-line a {
+	float: left;
+	margin-right: 6px;
+}
+
+.color-line a {
+	float: right;
+	margin-left: 6px;
+}
+
+.float-l {
+	float: left;
+}
+
+.float-r {
+	float: right;
+}
+
+.ml-10 {
+	margin-left: 10px;
+}
+
+.mr-10 {
+	margin-right: 10px;
+}
+
+.clr {
+	clear: both;
+}
+
+.link-btn {
+	border: 1px solid #ccc;
+	background: #f3f3f3;
+	color: black;
+	text-decoration: none;
+	padding: 2px 10px;
+}
+
+#wrap-box p {
+	width: 94%;
+	line-height: 150%;
+	margin: 4px auto;
+	padding: 2px;
+}

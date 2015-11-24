@@ -46,7 +46,7 @@ public final class NovelFactory {
 		Novel instance = (Novel) cls.newInstance();
 
 		instance.url = url;
-		instance.txtFile = new File(folder, path);
+		instance.outFile = new File(folder, path);
 		return instance;
 	}
 
