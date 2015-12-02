@@ -15,10 +15,10 @@ public class FetchNovelApp {
 
 	public static void main( String[] args ) throws Exception {
 
-		NovelFactory.setFolder( "D:\\fetch-novel\\" );
+		NovelFactory.setFolder( "/Users/Colin/Documents/fetch-novel" );
 
-		// NovelFactory.createNovel( "", "" ).fetch2html();
-		newThead2Fetch( new KV( "", "" ) );
+		NovelFactory.createNovel( "", "" ).fetch2html();
+		//		newThead2Fetch( new KV( "", "" ) );
 
 	}
 
