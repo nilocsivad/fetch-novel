@@ -15,7 +15,7 @@ import org.jsoup.select.Elements;
 
 /**
  * @author Colin
- *		
+ * 		
  */
 public class ExecAddIDProp {
 	
@@ -34,8 +34,6 @@ public class ExecAddIDProp {
 		
 		String folder = "/Users/Colin/Documents/fetch-novel/";
 		File[] files = new File( folder ).listFiles( ( f ) -> f.getName().endsWith( ".html" ) );
-		
-		// File f = new File( "/Users/Colin/Documents/fetch-novel/造化之门/47504952545756515746104116109108.html" );
 		
 		for ( File f : files ) {
 			
