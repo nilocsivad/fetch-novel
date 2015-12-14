@@ -26,7 +26,8 @@ public class FetchNovelApp {
 		for ( KV kv : arr ) {
 			new Thread() {
 				
-				@Override public void run() {
+				@Override
+				public void run() {
 					
 					try {
 						NovelFactory.createNovel( kv.url, kv.name ).fetch2html();
