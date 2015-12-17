@@ -28,7 +28,8 @@ public class _23wx extends Novel {
 	 */
 	public _23wx() {}
 	
-	@Override public int getWrapLine() {
+	@Override
+	public int getWrapLine() {
 		
 		return WRAP_LINE;
 	}
@@ -37,7 +38,8 @@ public class _23wx extends Novel {
 	 * (non-Javadoc)
 	 * @see com.iam_vip.fetch_novel.biz.Novel#fetch()
 	 */
-	@Override public void fetch() throws IOException {
+	@Override
+	public void fetch() throws IOException {
 		
 		try {
 			
@@ -95,7 +97,8 @@ public class _23wx extends Novel {
 	 * (non-Javadoc)
 	 * @see com.iam_vip.fetch_novel.biz.Novel#fetch2html()
 	 */
-	@Override public void fetch2html() throws Exception {
+	@Override
+	public void fetch2html() throws Exception {
 		
 		InputStream input = this.getClass().getResourceAsStream( "/com/iam_vip/fetch_novel/template.html" );
 		Document templateDoc = Jsoup.parse( input, "UTF-8", BASE_URI );
@@ -141,7 +144,7 @@ public class _23wx extends Novel {
 			buffer = new StringBuffer( buffer.toString().replace( "&nbsp;", "" ) );
 			String[] arr = buffer.toString().split( "<br>" );
 			
-			super.newWriter( super.url2file( LEN_URL ) + ".html" );
+			super.newWriter( super.url2file( LEN_URL ) );
 			{
 				Document templateDoc = Jsoup.parse( super.templateHTML );
 				templateDoc.title( document.title() );
