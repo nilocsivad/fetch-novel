@@ -19,7 +19,6 @@ import com.iam_vip.fetch_novel.biz.Novel;
 public class _23wx extends Novel {
 	
 	private static final int	WRAP_LINE	= 3;
-	private static final int	LEN_URL		= 32;
 	private static final String	END_SUFFIX	= "/index.html";
 											
 											
@@ -144,7 +143,7 @@ public class _23wx extends Novel {
 			buffer = new StringBuffer( buffer.toString().replace( "&nbsp;", "" ) );
 			String[] arr = buffer.toString().split( "<br>" );
 			
-			super.newWriter( super.url2file( LEN_URL ) );
+			super.newWriter( super.url2file( super.url ) );
 			{
 				Document templateDoc = Jsoup.parse( super.templateHTML );
 				templateDoc.title( document.title() );
@@ -158,10 +157,10 @@ public class _23wx extends Novel {
 				}
 				
 				Elements next = templateDoc.getElementsByClass( "next" );
-				next.attr( "href", String.format( "./%s.html", super.url2file( super.base_url + down, LEN_URL ) ) );
+				next.attr( "href", String.format( "./%s", super.url2file( super.base_url + down ) ) );
 				
 				Elements previous = templateDoc.getElementsByClass( "previous" );
-				previous.attr( "href", String.format( "./%s.html", super.url2file( super.base_url + up, LEN_URL ) ) );
+				previous.attr( "href", String.format( "./%s", super.url2file( super.base_url + up ) ) );
 				
 				super.write( templateDoc.outerHtml() );
 				super.end();

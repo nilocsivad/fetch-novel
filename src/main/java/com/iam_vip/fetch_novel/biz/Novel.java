@@ -116,12 +116,7 @@ public abstract class Novel implements IBrowserUserAgent {
 		}
 	}
 	
-	protected String url2file( int c ) {
-		
-		return this.url2file( url, c );
-	}
-	
-	protected String url2file( String url, int c ) {
+	protected String url2file( String url ) {
 		
 		url = url.substring( url.indexOf( base_url ) + base_url.length() );
 		
