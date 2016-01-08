@@ -29,9 +29,11 @@ public final class NovelFactory {
 	private NovelFactory() {}
 	
 	
-	private static File folder;
-	
-	
+	private static File	folder;
+						
+	public static int	novel_group_length	= 50;
+									
+									
 	public static void setFolder( String folder ) {
 		
 		NovelFactory.folder = new File( folder );

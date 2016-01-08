@@ -27,6 +27,7 @@ public class _23wx extends Novel {
 	 */
 	public _23wx() {}
 	
+	
 	@Override
 	public int getWrapLine() {
 		
@@ -54,9 +55,9 @@ public class _23wx extends Novel {
 			int c = 0;
 			int a = 0;
 			
-			int num = start + c * ARTICLE_LEN;
+			int num = start + c * novel_group_length;
 			
-			super.newWriter( super.outFile.getName() + "." + ( num + 1 ) + "-" + ( num + ARTICLE_LEN ) + ".txt" );
+			super.newWriter( super.outFile.getName() + "." + ( num + 1 ) + "-" + ( num + novel_group_length ) + ".txt" );
 			
 			do {
 				
@@ -68,12 +69,12 @@ public class _23wx extends Novel {
 				super.url = super.base_url + href;
 				
 				a ++;
-				if ( a != 0 && a % ARTICLE_LEN == 0 ) {
+				if ( a != 0 && a % novel_group_length == 0 ) {
 					super.end();
 					a = 0;
 					c ++;
-					num = start + c * ARTICLE_LEN;
-					super.newWriter( super.outFile.getName() + "-" + ( num + 1 ) + "-" + ( num + ARTICLE_LEN ) + ".txt" );
+					num = start + c * novel_group_length;
+					super.newWriter( super.outFile.getName() + "-" + ( num + 1 ) + "-" + ( num + novel_group_length ) + ".txt" );
 				}
 			}
 			while ( !super.url.endsWith( END_SUFFIX ) );

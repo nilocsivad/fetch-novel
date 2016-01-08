@@ -20,18 +20,20 @@ import com.iam_vip.fetch_novel.c.IBrowserUserAgent;
  */
 public abstract class Novel implements IBrowserUserAgent {
 	
-	private static final String		WRAP_LINE	= "\r\n";
-	protected static final int		TIMEOUT		= 1000 * 60 * 1 * 1;		// 1 minute
-												
-	protected static final int		ARTICLE_LEN	= 50;
-												
-	protected static final String	BASE_URI	= "http://www.baidu.com";
-												
-												
+	
+	protected static final String	BASE_URI			= "http://www.baidu.com";
+	private static final String		WRAP_LINE			= "\r\n";
+														
+	protected static final int		TIMEOUT				= 1000 * 60 * 1 * 1;				// 1 minute
+	protected static final int		novel_group_length	= NovelFactory.novel_group_length;
+														
+														
 	/**
 	 * 
 	 */
 	protected Novel() {}
+	
+	
 	
 	
 	protected String	url	= "";

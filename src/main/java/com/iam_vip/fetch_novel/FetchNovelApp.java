@@ -16,7 +16,9 @@ public class FetchNovelApp {
 		
 		NovelFactory.setFolder( "D:\\Novel" );
 		
+		NovelFactory.novel_group_length = 100;
 		NovelFactory.createNovel( "", "" ).fetch( 100000 );
+		
 		// newThead2Fetch( new KV( "", "" ) );
 		
 	}
