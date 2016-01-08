@@ -23,6 +23,8 @@ public abstract class Novel implements IBrowserUserAgent {
 	private static final String		WRAP_LINE	= "\r\n";
 	protected static final int		TIMEOUT		= 1000 * 60 * 1 * 1;		// 1 minute
 												
+	protected static final int		ARTICLE_LEN	= 50;
+												
 	protected static final String	BASE_URI	= "http://www.baidu.com";
 												
 												
@@ -45,6 +47,8 @@ public abstract class Novel implements IBrowserUserAgent {
 	public abstract int getWrapLine();
 	
 	public abstract void fetch() throws Exception;
+	
+	public abstract void fetch( int start ) throws Exception;
 	
 	protected void setTemplate( String template ) {
 		

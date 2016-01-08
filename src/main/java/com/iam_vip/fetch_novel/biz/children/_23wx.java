@@ -40,18 +40,41 @@ public class _23wx extends Novel {
 	@Override
 	public void fetch() throws IOException {
 		
+		this.fetch( 100000 );
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.iam_vip.fetch_novel.biz.Novel#fetch(int)
+	 */
+	@Override
+	public void fetch( int start ) throws IOException {
+		
 		try {
 			
-			super.newWriter( super.outFile.getName() + ".txt" );
+			int c = 0;
+			int a = 0;
+			
+			int num = start + c * ARTICLE_LEN;
+			
+			super.newWriter( super.outFile.getName() + "." + ( num + 1 ) + "-" + ( num + ARTICLE_LEN ) + ".txt" );
 			
 			do {
 				
 				Document document = this.fetchNovel();
+				
 				if ( document == null ) break;
 				
 				String href = document.getElementById( "amain" ).getElementsMatchingOwnText( "下一页" ).get( 0 ).attr( "href" );
 				super.url = super.base_url + href;
 				
+				a ++;
+				if ( a != 0 && a % ARTICLE_LEN == 0 ) {
+					super.end();
+					a = 0;
+					c ++;
+					num = start + c * ARTICLE_LEN;
+					super.newWriter( super.outFile.getName() + "-" + ( num + 1 ) + "-" + ( num + ARTICLE_LEN ) + ".txt" );
+				}
 			}
 			while ( !super.url.endsWith( END_SUFFIX ) );
 			

@@ -14,9 +14,9 @@ public class FetchNovelApp {
 	
 	public static void main( String[] args ) throws Exception {
 		
-		NovelFactory.setFolder( "/Users/Colin/Documents/fetch-novel" );
+		NovelFactory.setFolder( "D:\\Novel" );
 		
-		NovelFactory.createNovel( "", "" ).fetch2html();
+		NovelFactory.createNovel( "", "" ).fetch( 100000 );
 		// newThead2Fetch( new KV( "", "" ) );
 		
 	}

@@ -41,6 +41,8 @@ public final class NovelFactory {
 	
 	public static Novel createNovel( String url, String folder ) throws Exception {
 		
+		url = url.trim();
+		
 		String key = getSiteKey( url );
 		
 		Class< ? > cls = URL2CLASS.get( key );
