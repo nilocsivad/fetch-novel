@@ -82,6 +82,8 @@ public class ReadNovelTxt2Html {
 		
 		for ( File f : fs ) {
 			
+			System.out.println( f.getAbsolutePath() );
+			
 			StringBuffer buf = new StringBuffer( 32 );
 			
 			BufferedReader reader = new BufferedReader( new FileReader( f ) );
