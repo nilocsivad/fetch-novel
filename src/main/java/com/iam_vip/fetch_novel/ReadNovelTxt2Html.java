@@ -28,7 +28,6 @@ public class ReadNovelTxt2Html {
 	public ReadNovelTxt2Html() {}
 	
 	
-	private File[]		fs;
 	private int			start;
 	private int			len;
 	private FileWriter	writer;
@@ -38,21 +37,8 @@ public class ReadNovelTxt2Html {
 	@Before
 	public void initData() throws IOException {
 		
-		start = 100000;
-		len = 10 * 2 + 1; // 5
+		len = 10 * 2 + 1; // 10
 		
-		String folder = "D:\\Novel\\****";
-		
-		fs = new File( folder ).listFiles( f -> {
-			return f.isFile() && f.getName().endsWith( "txt" );
-		} );
-		
-		start += new File( folder ).listFiles( f -> {
-			return f.isFile() && f.getName().endsWith( "html" );
-		} ).length + 1;
-		
-		InputStream input = this.getClass().getResourceAsStream( "/com/iam_vip/fetch_novel/template.html" );
-		templateDoc = Jsoup.parse( input, "UTF-8", "" );
 	}
 	
 	private void write2Html( File f, String txt ) throws IOException {
@@ -79,6 +65,49 @@ public class ReadNovelTxt2Html {
 	
 	@Test
 	public void read() throws IOException {
+		
+		String pf = "D:\\Novel\\***\\";
+		
+		this.parseTxt( pf );
+		
+		// File[] folders = new File( pf ).listFiles( f -> {
+		// return f.isDirectory();
+		// } );
+		// for ( File folder : folders ) {
+		// // this.deleteFilter( folder );
+		// this.parseTxt( folder );
+		// }
+	}
+	
+	public void parseTxt( String folder ) throws IOException {
+		
+		this.parseTxt( new File( folder ) );
+	}
+	
+	public void deleteFilter( File folder ) {
+		
+		File[] fs = folder.listFiles( f -> {
+			return f.isFile() && f.getName().endsWith( "html" );
+		} );
+		
+		for ( File f : fs ) {
+			f.delete();
+		}
+	}
+	
+	public void parseTxt( File folder ) throws IOException {
+		
+		File[] fs = folder.listFiles( f -> {
+			return f.isFile() && f.getName().endsWith( "txt" );
+		} );
+		
+		start = 100000;
+		start += folder.listFiles( f -> {
+			return f.isFile() && f.getName().endsWith( "html" );
+		} ).length + 1;
+		
+		InputStream input = this.getClass().getResourceAsStream( "/com/iam_vip/fetch_novel/template.html" );
+		templateDoc = Jsoup.parse( input, "UTF-8", "" );
 		
 		for ( File f : fs ) {
 			
@@ -109,6 +138,7 @@ public class ReadNovelTxt2Html {
 			reader.close();
 			
 		}
+		
 	}
 	
 }
