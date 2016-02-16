@@ -7,6 +7,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.iam_vip.fetch_novel.biz.children._1KanShu;
 import com.iam_vip.fetch_novel.biz.children._23wx;
 
 /**
@@ -20,6 +21,7 @@ public final class NovelFactory {
 	
 	static {
 		URL2CLASS.put( "http://www.23wx.com", _23wx.class );
+		URL2CLASS.put( "http://www.1kanshu.cc", _1KanShu.class );
 	}
 	// </novel-children>
 	
@@ -32,8 +34,8 @@ public final class NovelFactory {
 	private static File	folder;
 						
 	public static int	novel_group_length	= 50;
-									
-									
+											
+											
 	public static void setFolder( String folder ) {
 		
 		NovelFactory.folder = new File( folder );

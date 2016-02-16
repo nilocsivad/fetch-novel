@@ -1,5 +1,9 @@
 package com.iam_vip.fetch_novel;
 
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+
 import com.iam_vip.fetch_novel.biz.NovelFactory;
 
 /**
@@ -21,6 +25,21 @@ public class FetchNovelApp {
 		
 		// newThead2Fetch( new KV( "", "" ) );
 		
+		String url = "";
+		getHtml( url );
+		
+	}
+	
+	/**
+	 * @param url
+	 * @throws IOException
+	 */
+	public static void getHtml( String url ) throws IOException {
+		
+		if ( url == null || "".equals( url ) ) return;
+		
+		String htm = Jsoup.connect( url ).timeout( 1000 * 60 * 3 ).get().html();
+		System.out.println( htm );
 	}
 	
 	public static void newThead2Fetch( KV... arr ) {
