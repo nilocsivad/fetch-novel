@@ -9,6 +9,7 @@ import java.util.Map;
 
 import com.iam_vip.fetch_novel.biz.children._1KanShu;
 import com.iam_vip.fetch_novel.biz.children._23wx;
+import com.iam_vip.fetch_novel.biz.children._bxwx;
 
 /**
  * @author Colin
@@ -22,6 +23,7 @@ public final class NovelFactory {
 	static {
 		URL2CLASS.put( "http://www.23wx.com", _23wx.class );
 		URL2CLASS.put( "http://www.1kanshu.cc", _1KanShu.class );
+		URL2CLASS.put( "http://www.bxwx.org", _bxwx.class );
 	}
 	// </novel-children>
 	
