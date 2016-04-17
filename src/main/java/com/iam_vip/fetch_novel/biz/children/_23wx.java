@@ -74,7 +74,7 @@ public class _23wx extends Novel {
 					a = 0;
 					c ++;
 					num = start + c * novel_group_length;
-					super.newWriter( super.outFile.getName() + "-" + ( num + 1 ) + "-" + ( num + novel_group_length ) + ".txt" );
+					super.newWriter( super.outFile.getName() + "." + ( num + 1 ) + "-" + ( num + novel_group_length ) + ".txt" );
 				}
 			}
 			while ( !super.url.endsWith( END_SUFFIX ) );

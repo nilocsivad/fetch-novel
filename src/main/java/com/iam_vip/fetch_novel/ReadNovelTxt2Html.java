@@ -66,7 +66,7 @@ public class ReadNovelTxt2Html {
 	@Test
 	public void read() throws IOException {
 		
-		String pf = "D:\\Novel\\***\\";
+		String pf = "/Users/Colin/Novel/麻衣神算子";
 		
 		this.parseTxt( pf );
 		
