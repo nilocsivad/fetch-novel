@@ -19,7 +19,7 @@ public class FetchNovelApp {
 
 	public static void main(String[] args) throws Exception {
 
-		if (System.getProperty("os.name").contains("windows")) {
+		if (System.getProperty("os.name").contains("Windows")) {
 			NovelFactory.setFolder("D:\\Novel");
 		} else {
 			NovelFactory.setFolder(System.getProperty("user.home") + "/Novel/");
