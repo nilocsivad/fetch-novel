@@ -1,6 +1,7 @@
 p {
-	font: 22px 微软雅黑, 宋体, arial, sans-serif;
+	font: 24px 微软雅黑, 宋体, Verdana, Arial, sans-serif;
 	color: #787878;
+	font-weight: 100;
 }
 
 .sz-line, .color-line {
