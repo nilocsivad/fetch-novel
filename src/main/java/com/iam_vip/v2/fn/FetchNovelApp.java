@@ -62,9 +62,9 @@ public class FetchNovelApp {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		int group = 100, add = 100000, start = 0;
+		int group = 100, add = 101000, start = 241;
 
-		String url = "";
+		String url = "http://www.23wx.com/html/61/61533/";
 
 
 

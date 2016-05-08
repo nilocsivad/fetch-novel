@@ -28,12 +28,10 @@ public class ReadNovelTxt2Html {
 	public ReadNovelTxt2Html() {
 	}
 
-
 	private int start;
 	private int len;
 	private FileWriter writer;
 	private Document templateDoc;
-
 
 	@Before
 	public void initData() throws IOException {
@@ -69,14 +67,16 @@ public class ReadNovelTxt2Html {
 
 		String pf = "";
 
+		/** include this folder **/
 		this.parseTxt(pf);
 
-		// File[] folders = new File( pf ).listFiles( f -> {
+		/** all children folder **/
+		// File[] folders = new File(pf).listFiles(f -> {
 		// return f.isDirectory();
-		// } );
-		// for ( File folder : folders ) {
+		// });
+		// for (File folder : folders) {
 		// // this.deleteFilter( folder );
-		// this.parseTxt( folder );
+		// this.parseTxt(folder);
 		// }
 	}
 
