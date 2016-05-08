@@ -64,7 +64,7 @@ public class FetchNovelApp {
 
 		int group = 100, add = 101000, start = 241;
 
-		String url = "http://www.23wx.com/html/61/61533/";
+		String url = "";
 
 
 
