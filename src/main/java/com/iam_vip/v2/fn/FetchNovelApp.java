@@ -48,10 +48,9 @@ public class FetchNovelApp {
 			writer.write(line);
 			writer.write(html + "\r\n");
 			writer.flush();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			System.err.println("error with " + url + "\r\n" + ex.getMessage());
-			Thread.sleep(3000);
+			Thread.sleep(10000);
 			write(url, instance, writer);
 		}
 	}
