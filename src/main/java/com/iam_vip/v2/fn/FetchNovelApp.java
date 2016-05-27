@@ -41,7 +41,7 @@ public class FetchNovelApp {
 		return null;
 	}
 
-	static void write(String url, _site instance, BufferedWriter writer) throws Exception {
+	static void write(String url, _site instance, BufferedWriter writer, int count) throws Exception {
 		try {
 			Document doc = instance.getDoc(url);
 			System.out.println(doc.title() + " --- " + url);
@@ -53,8 +53,10 @@ public class FetchNovelApp {
 		}
 		catch (Exception ex) {
 			System.err.println("error with " + url + "\r\n" + ex.getMessage());
-			Thread.sleep(10000);
-			write(url, instance, writer);
+			if (count <= 3) {
+				Thread.sleep(10000);
+				write(url, instance, writer, count++);
+			}
 		}
 	}
 
@@ -101,7 +103,9 @@ public class FetchNovelApp {
 				writer = new BufferedWriter(new FileWriter(txtFile));
 			}
 
-			write(url + href, instance, writer);
+			write(url + href, instance, writer, 1);
+
+			Thread.sleep(50);
 		}
 
 	}
