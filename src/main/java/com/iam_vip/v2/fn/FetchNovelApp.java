@@ -12,6 +12,7 @@ import org.jsoup.select.Elements;
 
 import com.iam_vip.v2.fn.site._site;
 import com.iam_vip.v2.fn.site.item._23wx;
+import com.iam_vip.v2.fn.site.item.mianhuatang;
 
 /**
  * Hello world!
@@ -28,6 +29,7 @@ public class FetchNovelApp {
 
 	static {
 		map.put(_23wx.PREFIX, _23wx.class);
+		map.put(mianhuatang.PREFIX, mianhuatang.class);
 	}
 
 	static _site getSite(String url) throws InstantiationException, IllegalAccessException {
@@ -48,7 +50,8 @@ public class FetchNovelApp {
 			writer.write(line);
 			writer.write(html + "\r\n");
 			writer.flush();
-		} catch (Exception ex) {
+		}
+		catch (Exception ex) {
 			System.err.println("error with " + url + "\r\n" + ex.getMessage());
 			Thread.sleep(10000);
 			write(url, instance, writer);

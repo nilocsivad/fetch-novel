@@ -1,0 +1,66 @@
+/**
+ * 
+ */
+package com.iam_vip.v2.fn.site.item;
+
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import com.iam_vip.v2.fn.site._site;
+
+/**
+ * @author Colin
+ *
+ */
+public class mianhuatang implements _site {
+
+	public static final String PREFIX = "http://www.mianhuatang.cc/";
+
+	/**
+	 * 
+	 */
+	public mianhuatang() {
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.iam_vip.v2.fn.site._site#getName(org.jsoup.nodes.Document)
+	 */
+	@Override
+	public String getName(Document doc) {
+		return doc.getElementsByClass("xiaoshuo").get(0).getElementsByTag("h1").text();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.iam_vip.v2.fn.site._site#get(org.jsoup.nodes.Document)
+	 */
+	@Override
+	public Elements get(Document doc) {
+		return doc.getElementsByClass("novel_list").get(0).getElementsByTag("a");
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.iam_vip.v2.fn.site._site#getDocHtml(org.jsoup.nodes.Document)
+	 */
+	@Override
+	public String getDocHtml(Document doc) {
+		Element novel = doc.getElementsByClass("content").get(0);
+		novel.getElementsByTag("div").remove();
+		novel.getElementsByTag("a").remove();
+		novel.getElementsByTag("p").remove();
+
+		StringBuffer buffer = new StringBuffer(novel.html());
+		buffer = new StringBuffer(buffer.toString().replace("&nbsp;", ""));
+		buffer = new StringBuffer(buffer.toString().replace("<br />", ""));
+		buffer = new StringBuffer(buffer.toString().replace("<br/>", ""));
+		buffer = new StringBuffer(buffer.toString().replace("<br>", ""));
+		return buffer.toString();
+	}
+
+}
