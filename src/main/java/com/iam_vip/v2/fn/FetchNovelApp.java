@@ -52,10 +52,11 @@ public class FetchNovelApp {
 			writer.flush();
 		}
 		catch (Exception ex) {
-			System.err.println("error with " + url + "\r\n" + ex.getMessage());
-			if (count <= 3) {
+			System.err.println("error with " + url);
+			ex.printStackTrace();
+			if (count <= 5) {
 				Thread.sleep(10000);
-				write(url, instance, writer, count++);
+				write(url, instance, writer, ++count);
 			}
 		}
 	}

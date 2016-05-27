@@ -50,7 +50,10 @@ public class mianhuatang implements _site {
 	 */
 	@Override
 	public String getDocHtml(Document doc) {
-		Element novel = doc.getElementsByClass("content").get(0);
+		Elements els1 = doc.getElementsByClass("content");
+		Elements els2 = doc.getElementsByClass("yuedu_zhengwen");
+
+		Element novel = (els1.size() > 0 ? els1 : els2).get(0);
 		novel.getElementsByTag("div").remove();
 		novel.getElementsByTag("a").remove();
 		novel.getElementsByTag("p").remove();
