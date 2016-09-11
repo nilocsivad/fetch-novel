@@ -11,6 +11,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.iam_vip.v2.fn.site._site;
+import com.iam_vip.v2.fn.site.item._136book;
 import com.iam_vip.v2.fn.site.item._23wx;
 import com.iam_vip.v2.fn.site.item.mianhuatang;
 
@@ -29,6 +30,7 @@ public class FetchNovelApp {
 
 	static {
 		map.put(_23wx.PREFIX, _23wx.class);
+		map.put(_136book.PREFIX, _136book.class);
 		map.put(mianhuatang.PREFIX, mianhuatang.class);
 	}
 
@@ -104,7 +106,11 @@ public class FetchNovelApp {
 				writer = new BufferedWriter(new FileWriter(txtFile));
 			}
 
-			write(url + href, instance, writer, 1);
+			String toURL = url + href;
+			if (href.startsWith("http:")) {
+				toURL = href;
+			}
+			write(toURL, instance, writer, 1);
 
 			Thread.sleep(50);
 		}

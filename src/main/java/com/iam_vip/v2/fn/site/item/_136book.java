@@ -13,51 +13,44 @@ import com.iam_vip.v2.fn.site._site;
  * @author Colin
  *
  */
-public class mianhuatang implements _site {
+public class _136book implements _site {
 
-	public static final String PREFIX = "http://www.mianhuatang.la/";
+	public static final String PREFIX = "http://www.136book.com/";
 
 	/**
 	 * 
 	 */
-	public mianhuatang() {
+	public _136book() {
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see com.iam_vip.v2.fn.site._site#getName(org.jsoup.nodes.Document)
 	 */
 	@Override
 	public String getName(Document doc) {
-		return doc.getElementsByClass("xiaoshuo").get(0).getElementsByTag("h1").text();
+		return doc.getElementsByClass("cont_title").get(0).getElementsByTag("h1").text();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see com.iam_vip.v2.fn.site._site#get(org.jsoup.nodes.Document)
 	 */
 	@Override
 	public Elements get(Document doc) {
-		return doc.getElementsByClass("novel_list").get(0).getElementsByTag("a");
+		Elements eles = doc.getElementsByClass("box1");
+		return eles.get(eles.size() - 1).getElementsByTag("a");
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see com.iam_vip.v2.fn.site._site#getDocHtml(org.jsoup.nodes.Document)
 	 */
 	@Override
 	public String getDocHtml(Document doc) {
-		Elements els1 = doc.getElementsByClass("content");
-		Elements els2 = doc.getElementsByClass("yuedu_zhengwen");
-
-		Element novel = (els1.size() > 0 ? els1 : els2).get(0);
+		Element novel = doc.getElementById("content");
+		novel.getElementsByTag("center").remove();
 		novel.getElementsByTag("div").remove();
-		novel.getElementsByTag("a").remove();
-		novel.getElementsByTag("p").remove();
-
 		StringBuffer buffer = new StringBuffer(novel.html());
 		buffer = new StringBuffer(buffer.toString().replace("&nbsp;", ""));
 		buffer = new StringBuffer(buffer.toString().replace("<br />", ""));
