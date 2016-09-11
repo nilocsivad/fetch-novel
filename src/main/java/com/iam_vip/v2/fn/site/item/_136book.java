@@ -52,10 +52,8 @@ public class _136book implements _site {
 		novel.getElementsByTag("center").remove();
 		novel.getElementsByTag("div").remove();
 		StringBuffer buffer = new StringBuffer(novel.html());
-		buffer = new StringBuffer(buffer.toString().replace("&nbsp;", ""));
-		buffer = new StringBuffer(buffer.toString().replace("<br />", ""));
-		buffer = new StringBuffer(buffer.toString().replace("<br/>", ""));
-		buffer = new StringBuffer(buffer.toString().replace("<br>", ""));
+		buffer = new StringBuffer(buffer.toString().replace("<p>", ""));
+		buffer = new StringBuffer(buffer.toString().replace("</p>", "\r\n\r\n"));
 		return buffer.toString();
 	}
 
