@@ -15,55 +15,63 @@ import com.iam_vip.fetch_novel.biz.children._bxwx;
  * @author Colin
  */
 public final class NovelFactory {
-	
+
 	// <novel-children>
-	private static final Map< String, Class< ? > > URL2CLASS = new HashMap< >();
-	
-	
+	private static final Map<String, Class<?>> MAP = new HashMap<>();
+
+
 	static {
-		URL2CLASS.put( "http://www.23wx.com", _23wx.class );
-		URL2CLASS.put( "http://www.1kanshu.cc", _1KanShu.class );
-		URL2CLASS.put( "http://www.bxwx.org", _bxwx.class );
+		MAP.put("http://www.23wx.com", _23wx.class);
+		MAP.put("http://www.1kanshu.cc", _1KanShu.class);
+		MAP.put("http://www.bxwx.org", _bxwx.class);
 	}
 	// </novel-children>
-	
+
 	/**
 	 * 
 	 */
-	private NovelFactory() {}
-	
-	
-	private static File	folder;
-						
-	public static int	novel_group_length	= 50;
-											
-											
-	public static void setFolder( String folder ) {
-		
-		NovelFactory.folder = new File( folder );
-		
-		if ( !NovelFactory.folder.exists() ) NovelFactory.folder.mkdirs();
+	private NovelFactory() {
+	}
+
+
+	private static File folder;
+
+	public static int novel_group_length = 50;
+
+
+	public static void setFolder(String folder) {
+
+		NovelFactory.folder = new File(folder);
+
+		if (!NovelFactory.folder.exists())
+			NovelFactory.folder.mkdirs();
 	}
 	
-	public static Novel createNovel( String url, String folder ) throws Exception {
-		
+	private static String prefix = "";
+
+	public static Novel createNovel(String url, String folder) throws Exception {
+
 		url = url.trim();
-		
-		String key = getSiteKey( url );
-		
-		Class< ? > cls = URL2CLASS.get( key );
-		Novel instance = ( Novel ) cls.newInstance();
-		
+
+		Class<?> cls = getInstance(url);
+		Novel instance = (Novel) cls.newInstance();
+
 		instance.url = url;
-		instance.outFile = new File( NovelFactory.folder, folder );
+		instance.outFile = new File(NovelFactory.folder, folder);
 		instance.outFile.mkdirs();
+		instance.base_url = prefix;
 		return instance;
 	}
-	
-	private static String getSiteKey( String url ) {
-		
-		String[] arr = url.split( "/", 4 );
-		return arr[ 0 ] + "/" + arr[ 1 ] + "/" + arr[ 2 ];
+
+	private static Class<?> getInstance(String url) {
+		for (Map.Entry<String, Class<?>> itm : MAP.entrySet()) {
+			if (url.startsWith(itm.getKey())) {
+				//prefix = url.substring(0, url.lastIndexOf("/") + 1);
+				prefix = itm.getKey();
+				return itm.getValue();
+			}
+		}
+		return null;
 	}
-	
+
 }

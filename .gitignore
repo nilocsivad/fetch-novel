@@ -9,13 +9,20 @@
 *.ear
 *.log
 *.log.
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/nilocsivad/fetch-novel.git
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+<<<<<<< HEAD
 classes/
 /classes/
 
+=======
+>>>>>>> branch 'master' of https://github.com/nilocsivad/fetch-novel.git
 target/
 /target/
 
