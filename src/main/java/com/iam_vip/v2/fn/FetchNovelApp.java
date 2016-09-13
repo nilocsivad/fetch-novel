@@ -14,6 +14,7 @@ import com.iam_vip.v2.fn.site._site;
 import com.iam_vip.v2.fn.site.item._136book;
 import com.iam_vip.v2.fn.site.item._23wx;
 import com.iam_vip.v2.fn.site.item.mianhuatang;
+import com.iam_vip.v2.fn.site.item.sbkk8;
 
 /**
  * Hello world!
@@ -32,11 +33,15 @@ public class FetchNovelApp {
 		map.put(_23wx.PREFIX, _23wx.class);
 		map.put(_136book.PREFIX, _136book.class);
 		map.put(mianhuatang.PREFIX, mianhuatang.class);
+		map.put(sbkk8.PREFIX, sbkk8.class);
 	}
+
+	static String URL = "";
 
 	static _site getSite(String url) throws InstantiationException, IllegalAccessException {
 		for (Map.Entry<String, Class<?>> itm : map.entrySet()) {
 			if (url.startsWith(itm.getKey())) {
+				URL = itm.getKey();
 				return (_site) itm.getValue().newInstance();
 			}
 		}
@@ -64,7 +69,6 @@ public class FetchNovelApp {
 	}
 
 	/**
-	 * 
 	 * @param args
 	 * @throws Exception
 	 */
@@ -73,7 +77,6 @@ public class FetchNovelApp {
 		int group = 100, add = 100000, start = 0;
 
 		String url = "";
-
 
 
 		_site instance = getSite(url);
@@ -109,6 +112,12 @@ public class FetchNovelApp {
 			String toURL = url + href;
 			if (href.startsWith("http:")) {
 				toURL = href;
+			}
+			else {
+				String x1 = url.substring(url.indexOf(URL) + URL.length());
+				if (href.startsWith("/" + x1)) {
+					toURL = url.substring(0, URL.length()) + href;
+				}
 			}
 			write(toURL, instance, writer, 1);
 
