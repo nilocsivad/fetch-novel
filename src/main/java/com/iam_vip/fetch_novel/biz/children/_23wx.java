@@ -68,8 +68,8 @@ public class _23wx extends Novel {
 				if (document == null)
 					break;
 
-				String href = document.getElementById("amain").getElementsMatchingOwnText("下一页").get(0).attr("href");
-				super.url = super.base_url + href;
+				// String href = document.getElementById("amain").getElementsMatchingOwnText("下一页").get(0).attr("href");
+				// super.url = super.base_url + href;
 
 				a++;
 				if (a != 0 && a % novel_group_length == 0) {
@@ -100,10 +100,10 @@ public class _23wx extends Novel {
 		Document document = super.doc();
 		if (document != null) {
 
-			if (super.base_url == null) {
-				String href = document.getElementById("amain").getElementsMatchingOwnText("下一页").get(0).attr("href");
-				super.calcBaseUrl(href);
-			}
+			// if (super.base_url == null) {
+			String href = document.getElementById("amain").getElementsMatchingOwnText("下一页").get(0).absUrl("href");
+			super.url = href;
+			// }
 
 			System.out.println(document.title() + "   " + super.url);
 			super.write("\r\n\r\n\r\n------------------------------------\r\n---   " + document.title() + " ---\r\n--- " + super.url + " ---\r\n------------------------------------");

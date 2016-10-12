@@ -12,7 +12,7 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import com.iam_vip.fetch_novel.c.IBrowserUserAgent;
+import com.iam_vip.IBrowserUserAgent;
 
 /**
  * @author Colin

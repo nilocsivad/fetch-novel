@@ -68,16 +68,26 @@ public class FetchNovelApp {
 		}
 	}
 
-	/**
-	 * @param args
-	 * @throws Exception
-	 */
 	public static void main(String[] args) throws Exception {
 
+		String[] urls = { 
+				"", 
+				"", 
+				""
+				};
+		for (String url : urls) {
+			doFetch(url);
+		}
+
+	}
+
+	public static void doFetch(String url) throws Exception {
+		
+		if (!url.startsWith("http:")) {
+			return;
+		}
+
 		int group = 100, add = 100000, start = 0;
-
-		String url = "";
-
 
 		_site instance = getSite(url);
 		if (instance == null)
