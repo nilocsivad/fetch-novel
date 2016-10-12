@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iam_vip.fetch_novel;
+package com.iam_vip.tool;
 
 import java.io.BufferedReader;
 import java.io.File;

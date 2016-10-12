@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>${title}</title>
+		<!--\[if IE]>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  	<!\[endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link type="text/css" rel="stylesheet" href="../style.css">
+	</head>
+	<body>
+		<h3 id="title"></h3>
+		<p id="url"></p>
+		<p class="op-line">
+			<a class="float-l ml-10 link-btn previous" href="${previous}" id="previous0">上一章</a> 
+			<a class="float-r mr-10 link-btn next" href="${next}" id="next0">下一章</a> 
+			<span class="clr">&nbsp;&nbsp;</span>
+		</p>
+		<div id="wrap-box">
+			<p class="txt-line"></p>
+#foreach( $itm in $list )
+			<p class="txt-line">${itm}</p>
+#end
+			<p class="txt-line"></p>
+		</div>
+		<p class="op-line">
+			<a class="float-l ml-10 link-btn previous" href="${previous}" id="previous1">上一章</a> 
+			<a class="float-r mr-10 link-btn next" href="${next}" id="next1">下一章</a> 
+			<span class="clr">&nbsp;&nbsp;</span>
+		</p>
+		<script type="text/javascript" src="../script.js"></script>
+	</body>
+</html>

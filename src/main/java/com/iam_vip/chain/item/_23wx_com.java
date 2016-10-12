@@ -34,10 +34,9 @@ public class _23wx_com extends ChainNovel {
 	protected String getContent(Document doc) {
 
 		StringBuffer buf = new StringBuffer();
-		buf.append("------------------------------------\r\n");
+		buf.append(START + "\r\n");
 		buf.append("--- " + doc.title() + " ---\r\n");
-		buf.append("--- " + doc.baseUri() + " ---\r\n");
-		buf.append("------------------------------------\r\n\r\n");
+		buf.append("--- " + doc.baseUri() + " ---\r\n\r\n");
 
 		Element novel = doc.getElementById("contents");
 		buf.append(novel.html().replace("&nbsp;", "").replace("<br>", "").replace("<br/>", "").replace("<br />", ""));
