@@ -8,10 +8,18 @@ package com.iam_vip;
  */
 public interface IBrowserUserAgent {
 
-	String CHROME_WIN = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36";
+	String CHROME_WIN1 = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.71 Safari/537.36";
 
-	String FIREFOX_WIN = "Mozilla/5.0 (Windows NT 6.1; rv:41.0) Gecko/20100101 Firefox/41.0";
+	String CHROME_WIN2 = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36";
 
-	String[] ArrUserAgent = { CHROME_WIN, FIREFOX_WIN };
+	String FIREFOX_WIN1 = "Mozilla/5.0 (Windows NT 6.1; rv:41.0) Gecko/20100101 Firefox/41.0";
+
+	String FIREFOX_WIN2 = "Mozilla/5.0 (Windows NT 6.1; rv:42.0) Gecko/20100101 Firefox/42.0";
+
+	String FIREFOX_WIN3 = "Mozilla/5.0 (Windows NT 6.1; rv:43.0) Gecko/20100101 Firefox/43.0";
+
+	String FIREFOX_WIN4 = "Mozilla/5.0 (Windows NT 6.1; rv:48.0) Gecko/20100101 Firefox/48.0";
+
+	String[] ArrUserAgent = { CHROME_WIN1, CHROME_WIN2, FIREFOX_WIN1, FIREFOX_WIN2, FIREFOX_WIN3, FIREFOX_WIN4 };
 
 }
