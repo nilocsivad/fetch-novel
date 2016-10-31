@@ -46,7 +46,7 @@ public class ReadNovelTxt2Velocity {
 
 		// readFile2("D:\\Novel\\", 5);
 
-		readFolder2("盅真人", 5);
+		readFolder2("", 5);
 
 	}
 
@@ -161,9 +161,14 @@ public class ReadNovelTxt2Velocity {
 			List<File> list = Arrays.asList(files);
 			Collections.sort(list, new Comparator<File>() {
 				public int compare(File o1, File o2) {
-					int n1 = Integer.parseInt(o1.getName().substring(0, 10));
-					int n2 = Integer.parseInt(o2.getName().substring(0, 10));
-					return n1 - n2;
+					if (o1.getName().matches("/^\\d+\\.txt$/") == false) {
+						return o1.getName().compareTo(o2.getName());
+					}
+					else {
+						int n1 = Integer.parseInt(o1.getName().substring(0, 10));
+						int n2 = Integer.parseInt(o2.getName().substring(0, 10));
+						return n1 - n2;
+					}
 				}
 			});
 

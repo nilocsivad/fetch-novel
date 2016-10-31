@@ -20,8 +20,8 @@ public class FetchChainNovel {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		String url = "http://www.23wx.com/html/26/26811/26724111.html";
-		String toFolder = "盅真人";
+		String url = "";
+		String toFolder = "";
 
 		ChainNovel.getInstance(url).start(toFolder);
 
