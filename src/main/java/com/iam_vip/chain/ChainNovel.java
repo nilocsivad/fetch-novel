@@ -22,8 +22,6 @@ import com.iam_vip.chain.item._23wx_com;
  * @author Colin
  */
 public abstract class ChainNovel implements IBrowserUserAgent {
-	
-	public static final String START = "------------------------------------";
 
 	protected static final int TIMEOUT = 1000 * 60 * 1 * 1; // 1 minute
 

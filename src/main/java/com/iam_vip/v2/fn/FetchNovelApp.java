@@ -10,6 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.iam_vip.IBrowserUserAgent;
 import com.iam_vip.v2.fn.site._site;
 import com.iam_vip.v2.fn.site.item._136book;
 import com.iam_vip.v2.fn.site.item._23wx;
@@ -51,8 +52,16 @@ public class FetchNovelApp {
 	static void write(String url, _site instance, BufferedWriter writer, int count) throws Exception {
 		try {
 			Document doc = instance.getDoc(url);
-			System.out.println(doc.title() + " --- " + url);
-			String line = "\r\n\r\n\r\n------------------------------------\r\n---   " + doc.title() + " ---\r\n--- " + url + " ---\r\n------------------------------------\r\n\r\n";
+
+			System.out.println("--> " + doc.baseUri() + " ==> " + doc.title());
+
+
+			StringBuffer buf = new StringBuffer();
+			buf.append(IBrowserUserAgent.START + "\r\n");
+			buf.append("--- " + doc.title() + " ---\r\n");
+			buf.append("--- " + doc.baseUri() + " ---\r\n\r\n");
+			String line = buf.toString();
+
 			String html = instance.getDocHtml(doc);
 			writer.write(line);
 			writer.write(html + "\r\n");
@@ -73,8 +82,7 @@ public class FetchNovelApp {
 		String[] urls = { 
 				"", 
 				"", 
-				""
-				};
+				"" };
 		for (String url : urls) {
 			doFetch(url);
 		}
@@ -82,7 +90,7 @@ public class FetchNovelApp {
 	}
 
 	public static void doFetch(String url) throws Exception {
-		
+
 		if (!url.startsWith("http:")) {
 			return;
 		}
@@ -109,7 +117,7 @@ public class FetchNovelApp {
 
 		for (int i = start, x = 0, l = elements.size(); l > i; ++i, ++x) {
 			Element ele = elements.get(i);
-			String href = ele.attr("href");
+			String href = ele.absUrl("href");
 
 			if (x % group == 0) {
 				if (x >= group && writer != null)
@@ -119,17 +127,7 @@ public class FetchNovelApp {
 				writer = new BufferedWriter(new FileWriter(txtFile));
 			}
 
-			String toURL = url + href;
-			if (href.startsWith("http:")) {
-				toURL = href;
-			}
-			else {
-				String x1 = url.substring(url.indexOf(URL) + URL.length());
-				if (href.startsWith("/" + x1)) {
-					toURL = url.substring(0, URL.length()) + href;
-				}
-			}
-			write(toURL, instance, writer, 1);
+			write(href, instance, writer, 1);
 
 			Thread.sleep(50);
 		}
