@@ -48,6 +48,10 @@ public class ReadNovelTxt2Velocity {
 
 		readFolder2("", 5);
 
+//		String folder = "";
+//		for (File f : new File(folder).listFiles())
+//			readFolder2(folder, f.getName(), 5);
+
 	}
 
 	private static void resourcePath(String res) {
