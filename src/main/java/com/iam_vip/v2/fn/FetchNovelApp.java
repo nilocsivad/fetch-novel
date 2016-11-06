@@ -37,12 +37,9 @@ public class FetchNovelApp {
 		map.put(sbkk8.PREFIX, sbkk8.class);
 	}
 
-	static String URL = "";
-
 	static _site getSite(String url) throws InstantiationException, IllegalAccessException {
 		for (Map.Entry<String, Class<?>> itm : map.entrySet()) {
 			if (url.startsWith(itm.getKey())) {
-				URL = itm.getKey();
 				return (_site) itm.getValue().newInstance();
 			}
 		}
