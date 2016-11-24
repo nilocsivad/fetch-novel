@@ -46,9 +46,9 @@ public class ReadNovelTxt2Velocity {
 
 		// readFile2("D:\\Novel\\", 5);
 
-		readFolder2("", 5);
+		readFolder2("", 5); /// 十万个为什么 ///
 
-//		String folder = "";
+//		String folder = ""; /// D:\\十万个为什么 ///
 //		for (File f : new File(folder).listFiles())
 //			readFolder2(folder, f.getName(), 5);
 
