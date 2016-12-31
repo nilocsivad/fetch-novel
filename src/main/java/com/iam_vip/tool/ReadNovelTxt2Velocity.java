@@ -48,9 +48,9 @@ public class ReadNovelTxt2Velocity {
 
 		readFolder2("", 5); /// 十万个为什么 ///
 
-//		String folder = ""; /// D:\\十万个为什么 ///
-//		for (File f : new File(folder).listFiles())
-//			readFolder2(folder, f.getName(), 5);
+		// String folder = ""; /// D:\\十万个为什么 ///
+		// for (File f : new File(folder).listFiles())
+		// readFolder2(folder, f.getName(), 5);
 
 	}
 
@@ -77,6 +77,8 @@ public class ReadNovelTxt2Velocity {
 
 			File txtFile = new File(file.getParentFile(), (len + 1) + ".html");
 			FileWriter writer = new FileWriter(txtFile);
+
+			System.out.println(txtFile.getAbsolutePath());
 
 			Template template = Velocity.getTemplate(TEMPLATE_PATH, "UTF-8");
 			VelocityContext context = new VelocityContext();
