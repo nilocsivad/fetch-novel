@@ -14,6 +14,7 @@ import com.iam_vip.IBrowserUserAgent;
 import com.iam_vip.v2.fn.site._site;
 import com.iam_vip.v2.fn.site.item._136book;
 import com.iam_vip.v2.fn.site.item._23wx;
+import com.iam_vip.v2.fn.site.item.biqule;
 import com.iam_vip.v2.fn.site.item.mianhuatang;
 import com.iam_vip.v2.fn.site.item.sbkk8;
 
@@ -35,6 +36,7 @@ public class FetchNovelApp {
 		map.put(_136book.PREFIX, _136book.class);
 		map.put(mianhuatang.PREFIX, mianhuatang.class);
 		map.put(sbkk8.PREFIX, sbkk8.class);
+		map.put(biqule.PREFIX, biqule.class);
 	}
 
 	static _site getSite(String url) throws InstantiationException, IllegalAccessException {
