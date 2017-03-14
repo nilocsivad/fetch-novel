@@ -14,6 +14,7 @@ import com.iam_vip.IBrowserUserAgent;
 import com.iam_vip.v2.fn.site._site;
 import com.iam_vip.v2.fn.site.item._136book;
 import com.iam_vip.v2.fn.site.item._23wx;
+import com.iam_vip.v2.fn.site.item._23wx_cc;
 import com.iam_vip.v2.fn.site.item.biqule;
 import com.iam_vip.v2.fn.site.item.mianhuatang;
 import com.iam_vip.v2.fn.site.item.sbkk8;
@@ -33,6 +34,7 @@ public class FetchNovelApp {
 
 	static {
 		map.put(_23wx.PREFIX, _23wx.class);
+		map.put(_23wx_cc.PREFIX, _23wx_cc.class);
 		map.put(_136book.PREFIX, _136book.class);
 		map.put(mianhuatang.PREFIX, mianhuatang.class);
 		map.put(sbkk8.PREFIX, sbkk8.class);
