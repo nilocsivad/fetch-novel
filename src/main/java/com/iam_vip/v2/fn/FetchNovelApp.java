@@ -14,12 +14,17 @@ import com.iam_vip.IBrowserUserAgent;
 import com.iam_vip.v2.fn.site._site;
 import com.iam_vip.v2.fn.site.item._136book;
 import com.iam_vip.v2.fn.site.item._23us;
+import com.iam_vip.v2.fn.site.item._23us_cc;
+import com.iam_vip.v2.fn.site.item._23us_la;
 import com.iam_vip.v2.fn.site.item._23wx;
 import com.iam_vip.v2.fn.site.item._23wx_cc;
+import com.iam_vip.v2.fn.site.item._80txt;
 import com.iam_vip.v2.fn.site.item.biquge_tw;
+import com.iam_vip.v2.fn.site.item.biqugegebook;
 import com.iam_vip.v2.fn.site.item.biqule;
 import com.iam_vip.v2.fn.site.item.mianhuatang;
 import com.iam_vip.v2.fn.site.item.sbkk8;
+import com.iam_vip.v2.fn.site.item.zhuaji_org;
 
 /**
  * Hello world!
@@ -35,14 +40,19 @@ public class FetchNovelApp {
 	static Map<String, Class<?>> map = new HashMap<>();
 
 	static {
-		map.put(_23wx.PREFIX, _23wx.class);
+		map.put(_136book.PREFIX, _136book.class);
+		map.put(_23us_cc.PREFIX, _23us_cc.class);
+		map.put(_23us_la.PREFIX, _23us_la.class);
 		map.put(_23us.PREFIX, _23us.class);
 		map.put(_23wx_cc.PREFIX, _23wx_cc.class);
-		map.put(_136book.PREFIX, _136book.class);
+		map.put(_23wx.PREFIX, _23wx.class);
+		map.put(_80txt.PREFIX, _80txt.class);
+		map.put(biquge_tw.PREFIX, biquge_tw.class);
+		map.put(biqugegebook.PREFIX, biqugegebook.class);
+		map.put(biqule.PREFIX, biqule.class);
 		map.put(mianhuatang.PREFIX, mianhuatang.class);
 		map.put(sbkk8.PREFIX, sbkk8.class);
-		map.put(biqule.PREFIX, biqule.class);
-		map.put(biquge_tw.PREFIX, biquge_tw.class);
+		map.put(zhuaji_org.PREFIX, zhuaji_org.class);
 	}
 
 	static _site getSite(String url) throws InstantiationException, IllegalAccessException {
