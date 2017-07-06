@@ -1,7 +1,9 @@
 package com.iam_vip.v2.fn;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +14,7 @@ import org.jsoup.select.Elements;
 
 import com.iam_vip.IBrowserUserAgent;
 import com.iam_vip.v2.fn.site._site;
+import com.iam_vip.v2.fn.site.item._00ksw_org;
 import com.iam_vip.v2.fn.site.item._136book;
 import com.iam_vip.v2.fn.site.item._23us;
 import com.iam_vip.v2.fn.site.item._23us_cc;
@@ -47,6 +50,7 @@ public class FetchNovelApp {
 		map.put(_23wx_cc.PREFIX, _23wx_cc.class);
 		map.put(_23wx.PREFIX, _23wx.class);
 		map.put(_80txt.PREFIX, _80txt.class);
+		map.put(_00ksw_org.PREFIX, _00ksw_org.class);
 		map.put(biquge_tw.PREFIX, biquge_tw.class);
 		map.put(biqugegebook.PREFIX, biqugegebook.class);
 		map.put(biqule.PREFIX, biqule.class);
@@ -94,13 +98,32 @@ public class FetchNovelApp {
 
 	public static void main(String[] args) throws Exception {
 
-		String[] urls = { 
-				"", 
-				"", 
-				"" };
-		for (String url : urls) {
-			doFetch(url);
+//		String[] urls = { 
+//				"", 
+//				"", 
+//				"" };
+//		for (String url : urls) {
+//			doFetch(url);
+//		}
+		
+		BufferedReader reader = new BufferedReader(new FileReader("D:/output.txt"));
+		String line = null;
+		while((line = reader.readLine()) != null) {
+			final String tmp = line.trim();
+			if (tmp.startsWith("http")) {
+				new Thread() {
+					public void run() {
+						try {
+							doFetch(tmp);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}.start();
+			}
+			line = null;
 		}
+		reader.close();
 
 	}
 
