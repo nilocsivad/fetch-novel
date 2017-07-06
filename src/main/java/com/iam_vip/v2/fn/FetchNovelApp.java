@@ -1,9 +1,7 @@
 package com.iam_vip.v2.fn;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +25,7 @@ import com.iam_vip.v2.fn.site.item.biqugegebook;
 import com.iam_vip.v2.fn.site.item.biqule;
 import com.iam_vip.v2.fn.site.item.mianhuatang;
 import com.iam_vip.v2.fn.site.item.sbkk8;
+import com.iam_vip.v2.fn.site.item.tszww;
 import com.iam_vip.v2.fn.site.item.zhuaji_org;
 
 /**
@@ -56,6 +55,7 @@ public class FetchNovelApp {
 		map.put(biqule.PREFIX, biqule.class);
 		map.put(mianhuatang.PREFIX, mianhuatang.class);
 		map.put(sbkk8.PREFIX, sbkk8.class);
+		map.put(tszww.PREFIX, tszww.class);
 		map.put(zhuaji_org.PREFIX, zhuaji_org.class);
 	}
 
@@ -98,32 +98,33 @@ public class FetchNovelApp {
 
 	public static void main(String[] args) throws Exception {
 
-//		String[] urls = { 
-//				"", 
-//				"", 
-//				"" };
-//		for (String url : urls) {
-//			doFetch(url);
-//		}
-		
-		BufferedReader reader = new BufferedReader(new FileReader("D:/output.txt"));
-		String line = null;
-		while((line = reader.readLine()) != null) {
-			final String tmp = line.trim();
-			if (tmp.startsWith("http")) {
-				new Thread() {
-					public void run() {
-						try {
-							doFetch(tmp);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				}.start();
-			}
-			line = null;
+		String[] urls = { 
+				"", 
+				"", 
+				"" };
+		for (String url : urls) {
+			doFetch(url);
 		}
-		reader.close();
+		
+		// BufferedReader reader = new BufferedReader(new
+		// FileReader("D:/output.txt"));
+		// String line = null;
+		// while((line = reader.readLine()) != null) {
+		// final String tmp = line.trim();
+		// if (tmp.startsWith("http")) {
+		// new Thread() {
+		// public void run() {
+		// try {
+		// doFetch(tmp);
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
+		// }
+		// }.start();
+		// }
+		// line = null;
+		// }
+//		reader.close();
 
 	}
 
