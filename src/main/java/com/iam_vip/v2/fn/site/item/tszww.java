@@ -53,9 +53,9 @@ public class tszww implements _site {
 		Element novel = doc.getElementById("table_container");
 		StringBuffer buffer = new StringBuffer(novel.html());
 		buffer = new StringBuffer(buffer.toString().replace("&nbsp;", ""));
-		buffer = new StringBuffer(buffer.toString().replace("<br />", ""));
-		buffer = new StringBuffer(buffer.toString().replace("<br/>", ""));
-		buffer = new StringBuffer(buffer.toString().replace("<br>", ""));
+		buffer = new StringBuffer(buffer.toString().replace("<br />", "<p>"));
+		buffer = new StringBuffer(buffer.toString().replace("<br/>", "<p>"));
+		buffer = new StringBuffer(buffer.toString().replace("<br>", "\r\n<p>"));
 		return buffer.toString();
 	}
 
