@@ -9,6 +9,7 @@ import java.util.Map;
 
 import com.iam_vip.fetch_novel.biz.children._1KanShu;
 import com.iam_vip.fetch_novel.biz.children._23wx;
+import com.iam_vip.fetch_novel.biz.children._23wx_cc;
 import com.iam_vip.fetch_novel.biz.children._bxwx;
 
 /**
@@ -22,6 +23,7 @@ public final class NovelFactory {
 
 	static {
 		MAP.put("http://www.23wx.com", _23wx.class);
+		MAP.put("http://www.23wx.cc", _23wx_cc.class);
 		MAP.put("http://www.1kanshu.cc", _1KanShu.class);
 		MAP.put("http://www.bxwx.org", _bxwx.class);
 	}

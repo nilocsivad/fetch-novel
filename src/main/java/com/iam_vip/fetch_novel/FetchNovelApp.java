@@ -26,7 +26,7 @@ public class FetchNovelApp {
 		}
 
 		NovelFactory.novel_group_length = 100;
-		NovelFactory.createNovel("http://www.23wx.com/html/26/26811/26436157.html", "蛊真人").fetch(100000);
+		NovelFactory.createNovel("", "蛊真人").fetch(100000);
 
 		// newThead2Fetch( new KV( "", "" ) );
 
