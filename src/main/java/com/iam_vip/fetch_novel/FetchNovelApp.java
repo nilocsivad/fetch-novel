@@ -26,7 +26,7 @@ public class FetchNovelApp {
 		}
 
 		NovelFactory.novel_group_length = 100;
-		NovelFactory.createNovel("", "蛊真人").fetch(100000);
+		NovelFactory.createNovel("", "").fetch(100000);
 
 		// newThead2Fetch( new KV( "", "" ) );
 
