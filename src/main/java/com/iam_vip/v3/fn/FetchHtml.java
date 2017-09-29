@@ -107,9 +107,16 @@ public class FetchHtml implements IBrowserUserAgent {
 
 			/// HTML -> Element ///
 			Element element = document.getElementsByTag("body").first();
-			String htmlText = jsoupParse.getHtmlText(TextParsers, element).replace("&nbsp;", "")
-					.replace("<br />", "\r\n\r\n").replace("<br/>", "\r\n\r\n").replace("<br>", "\r\n\r\n")
-					.replace("</p>", "</p>\r\n\r\n").replace("</div>", "</div>\r\n\r\n");
+			String htmlText = null;
+
+			try {
+				htmlText = jsoupParse.getHtmlText(TextParsers, element).replace("&nbsp;", "")
+						.replace("<br />", "\r\n\r\n").replace("<br/>", "\r\n\r\n").replace("<br>", "\r\n\r\n")
+						.replace("</p>", "</p>\r\n\r\n").replace("</div>", "</div>\r\n\r\n");
+			} catch (Exception e) {
+				System.err.println("Error get from " + href);
+				continue;
+			}
 
 			System.out.println(title + " " + href);
 
