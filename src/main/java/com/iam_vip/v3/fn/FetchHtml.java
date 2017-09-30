@@ -85,7 +85,9 @@ public class FetchHtml implements IBrowserUserAgent {
 
 		Element bodyNode = document.getElementsByTag("body").first();
 		String name = jsoupParse.getHtmlText(NameParsers, bodyNode);
+		System.out.println(">>> " + name);
 		List<String> links = jsoupParse.getHtmlLinks(LinkParsers, bodyNode);
+		System.out.println(">>> " + links.size());
 
 		File folder = new File(toFolder, name);
 		if (folder.exists() == false)
