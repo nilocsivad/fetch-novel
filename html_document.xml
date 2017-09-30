@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<novels>
+
+	<http_www_23us_cc>
+		<name>
+			<id what="wrapper" />
+			<id what="container" />
+			<class what="bookinfo" index="0" />
+			<class what="btitle" index="0" />
+			<class what="fl" index="0" />
+			<tag what="h1" index="0" />
+		</name>
+		<link>
+			<id what="wrapper" />
+			<id what="container" />
+			<id what="main" />
+			<class what="inner" index="0" />
+			<class what="chapterlist" index="0" />
+		</link>
+		<text>
+			<id what="wrapper" />
+			<id what="container" />
+			<id what="main" />
+			<id what="BookCon" />
+			<id what="content" />
+		</text>
+	</http_www_23us_cc>
+
+	<http_www_23wx_cc>
+		<name>
+			<id what="wrapper" />
+			<class what="box_con" index="0" />
+			<id what="maininfo" />
+			<id what="info" />
+			<tag what="h1" index="0" />
+		</name>
+		<link>
+			<id what="wrapper" />
+			<class what="box_con" index="1" />
+			<id what="list" />
+			<tag what="dl" index="0" />
+		</link>
+		<text>
+			<id what="wrapper" />
+			<class what="content_read" index="0" />
+			<class what="box_con" index="0" />
+			<id what="content" />
+		</text>
+	</http_www_23wx_cc>
+	
+	<http_www_88dushu_com>
+		<name>
+			<class what="jieshao" index="0" />
+			<class what="rt" index="0" />
+			<tag what="h1" index="0" />
+		</name>
+		<link>
+			<class what="mulu" index="0" />
+			<tag what="ul" index="0" />
+		</link>
+		<text>
+			<class what="novel" index="0" />
+			<class what="yd_text2" index="0" />
+		</text>
+	</http_www_88dushu_com>
+
+	<http_www_miaobige_com>
+		<name>
+			<id what="main" />
+			<class what="coverecom" index="0" />
+			<id what="smallcons" />
+			<tag what="h1" index="0" />
+		</name>
+		<link>
+			<id what="main" />
+			<id what="readerlists" />
+			<tag what="ul" index="0" />
+		</link>
+		<text>
+			<id what="container" />
+			<id what="center" />
+			<id what="content" />
+		</text>
+	</http_www_miaobige_com>
+	
+</novels>
