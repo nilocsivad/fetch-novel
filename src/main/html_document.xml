@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<novels>
+
+	<http_www_biquge_lu>
+		<name>
+			<class what="book" index="0" />
+			<class what="info" index="0" />
+			<tag what="h2" index="0" />
+		</name>
+		<link>
+			<class what="listmain" index="0" />
+			<tag what="dl" index="0" />
+		</link>
+		<text>
+			<class what="reader" index="0" />
+			<class what="content" index="0" />
+			<class what="showtxt" index="0" />
+		</text>
+	</http_www_biquge_lu>
+	
+</novels>
