@@ -26,6 +26,7 @@ import com.iam_vip.v2.fn.site.item.biqule;
 import com.iam_vip.v2.fn.site.item.mianhuatang;
 import com.iam_vip.v2.fn.site.item.sbkk8;
 import com.iam_vip.v2.fn.site.item.tszww;
+import com.iam_vip.v2.fn.site.item.xxbiquge;
 import com.iam_vip.v2.fn.site.item.zhuaji_org;
 
 /**
@@ -51,6 +52,7 @@ public class FetchNovelApp {
 		map.put(_80txt.PREFIX, _80txt.class);
 		map.put(_00ksw_org.PREFIX, _00ksw_org.class);
 		map.put(biquge_tw.PREFIX, biquge_tw.class);
+		map.put(xxbiquge.PREFIX, xxbiquge.class);
 		map.put(biqugegebook.PREFIX, biqugegebook.class);
 		map.put(biqule.PREFIX, biqule.class);
 		map.put(mianhuatang.PREFIX, mianhuatang.class);
@@ -130,7 +132,7 @@ public class FetchNovelApp {
 
 	public static void doFetch(String url) throws Exception {
 
-		if (!url.startsWith("http:")) {
+		if (!url.startsWith("http:") && !url.startsWith("https:")) {
 			return;
 		}
 
