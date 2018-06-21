@@ -82,5 +82,26 @@
 			<id what="content" />
 		</text>
 	</http_www_miaobige_com>
+
+	<https_www_xxbiquge_com>
+		<name>
+			<id what="wrapper" />
+			<class what="box_con" index="0" />
+			<id what="maininfo" />
+			<id what="info" />
+			<tag what="h1" index="0" />
+		</name>
+		<link>
+			<id what="wrapper" />
+			<class what="box_con" index="1" />
+			<id what="list" />
+		</link>
+		<text>
+			<id what="wrapper" />
+			<class what="content_read" index="0" />
+			<class what="box_con" index="0" />
+			<id what="content" />
+		</text>
+	</https_www_xxbiquge_com>
 	
 </novels>

@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.JOptionPane;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -30,40 +28,41 @@ public class FetchHtml implements IBrowserUserAgent {
 
 
 		String whatURL = "";
-		String toFolder = "D:\\Novel\\", sourceXML = "D:\\Novel\\html_document.xml";
+		int start_i = 0; /// 从第多少章开始抓 ///
+		String toFolder = "/Novel/", sourceXML = "html_document.xml";
 		int iGroupCount = 100;
 
 
 
 
 
-		/// jar包代码 ///
-		{
-			whatURL = JOptionPane.showInputDialog("Input URL please!");
-			if (whatURL == null || whatURL.trim().equals("")) {
-				System.exit(0);
-			}
-
-			toFolder = JOptionPane.showInputDialog("Input a path please!", toFolder);
-			iGroupCount = Integer.parseInt(JOptionPane.showInputDialog("Input a group number please!", iGroupCount));
-
-			String jarWholePath = FetchHtml.class.getProtectionDomain().getCodeSource().getLocation().getFile();
-			jarWholePath = java.net.URLDecoder.decode(jarWholePath, "UTF-8");
-			String parentPath = "";
-			if (jarWholePath.endsWith("./")) {
-				parentPath = new File(jarWholePath.substring(0, jarWholePath.length() - 2)).getAbsolutePath();
-			} else {
-				parentPath = new File(jarWholePath).getParentFile().getAbsolutePath();
-				System.out.println(">>>2>>> " + parentPath);
-			}
-			sourceXML = new File(parentPath, "html_document.xml").getAbsolutePath();
-		}
+		////// jar包代码 ///
+		///{
+		///	whatURL = JOptionPane.showInputDialog("Input URL please!");
+		///	if (whatURL == null || whatURL.trim().equals("")) {
+		///		System.exit(0);
+		///	}
+        ///
+		///	toFolder = JOptionPane.showInputDialog("Input a path please!", toFolder);
+		///	iGroupCount = Integer.parseInt(JOptionPane.showInputDialog("Input a group number please!", iGroupCount));
+        ///
+		///	String jarWholePath = FetchHtml.class.getProtectionDomain().getCodeSource().getLocation().getFile();
+		///	jarWholePath = java.net.URLDecoder.decode(jarWholePath, "UTF-8");
+		///	String parentPath = "";
+		///	if (jarWholePath.endsWith("./")) {
+		///		parentPath = new File(jarWholePath.substring(0, jarWholePath.length() - 2)).getAbsolutePath();
+		///	} else {
+		///		parentPath = new File(jarWholePath).getParentFile().getAbsolutePath();
+		///		System.out.println(">>>2>>> " + parentPath);
+		///	}
+		///	sourceXML = new File(parentPath, "html_document.xml").getAbsolutePath();
+		///}
 
 
 		
 
 
-		int endIndex = whatURL.indexOf("/", 7);
+		int endIndex = whatURL.indexOf("/", 9);
 		String elementName = whatURL.substring(0, endIndex).replace(":", "_").replace("/", "").replace(".", "_");
 
 
@@ -97,7 +96,9 @@ public class FetchHtml implements IBrowserUserAgent {
 
 		FileWriter writer = null;
 		int iCount = 0;
-		for (String $0 : links) {
+		for ( int i = start_i, l = links.size(); i < l; ++i ) {
+			
+			String $0 = links.get( i );
 
 			document = getDoc($0);
 			if (document == null) {

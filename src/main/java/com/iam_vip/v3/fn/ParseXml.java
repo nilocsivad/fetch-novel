@@ -26,6 +26,7 @@ public final class ParseXml {
 
 	public ParseXml(String sourceXML) throws DocumentException {
 		File xmlFile = new File(sourceXML);
+		System.out.println("Load XML configure file " + xmlFile.getAbsolutePath());
 		this.document = new SAXReader().read(xmlFile);
 	}
 
