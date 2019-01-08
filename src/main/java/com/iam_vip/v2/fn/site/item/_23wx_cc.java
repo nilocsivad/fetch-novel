@@ -15,7 +15,7 @@ import com.iam_vip.v2.fn.site._site;
  */
 public class _23wx_cc implements _site {
 
-	public static final String PREFIX = "http://www.23wx.cc/";
+	public static final String PREFIX = "https://www.23wx.cc/";
 
 	/**
 	 * 

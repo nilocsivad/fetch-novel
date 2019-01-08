@@ -107,7 +107,7 @@ public class FetchNovelApp {
 		///var aaas = $("#list").find("a");
 		///for ( var i = 0, l = aaas.length; i < l; ++i ) {
 		///	var a = aaas[i];
-		///	if ( $(a).text().indexOf("天道成果") >= 0 ) {
+		///	if ( $(a).text().indexOf("") >= 0 ) {
 		///		console.log(i);
 		///	}
 		///};
