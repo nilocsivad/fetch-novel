@@ -49,7 +49,8 @@ public class FetchNovelApp {
 		map.put(_23us_cc.PREFIX, _23us_cc.class);
 		map.put(_23us_la.PREFIX, _23us_la.class);
 		map.put(_23us.PREFIX, _23us.class);
-		map.put(_23wx_cc.PREFIX, _23wx_cc.class);
+		map.put("https://www.23wx.cc/", _23wx_cc.class);
+		map.put("https://www.booktxt.net/", _23wx_cc.class);
 		map.put(_23wx.PREFIX, _23wx.class);
 		map.put(x23us.PREFIX, x23us.class);
 		map.put(_80txt.PREFIX, _80txt.class);
@@ -79,7 +80,6 @@ public class FetchNovelApp {
 			Document doc = instance.getDoc(url);
 
 			System.out.println("--> " + doc.baseUri() + " ==> " + doc.title());
-
 
 			StringBuffer buf = new StringBuffer();
 			buf.append(IBrowserUserAgent.START + "\r\n");
