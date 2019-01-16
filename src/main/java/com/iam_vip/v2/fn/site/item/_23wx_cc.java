@@ -23,31 +23,16 @@ public class _23wx_cc implements _site {
 	public _23wx_cc() {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.iam_vip.v2.fn.site._site#getName(org.jsoup.nodes.Document)
-	 */
 	@Override
 	public String getName(Document doc) {
 		return doc.getElementById("info").getElementsByTag("h1").get(0).text();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.iam_vip.v2.fn.site._site#get(org.jsoup.nodes.Document)
-	 */
 	@Override
 	public Elements get(Document doc) {
 		return doc.getElementById("list").getElementsByTag("a");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.iam_vip.v2.fn.site._site#getDocHtml(org.jsoup.nodes.Document)
-	 */
 	@Override
 	public String getDocHtml(Document doc) {
 		Element novel = doc.getElementById("content");

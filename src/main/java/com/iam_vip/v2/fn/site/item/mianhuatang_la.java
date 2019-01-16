@@ -13,14 +13,14 @@ import com.iam_vip.v2.fn.site._site;
  * @author Colin
  *
  */
-public class mianhuatang implements _site {
+public class mianhuatang_la implements _site {
 
-	public static final String PREFIX = "http://www.mianhuatang.la/";
+	public static final String PREFIX = "www.mianhuatang.la/";
 
 	/**
 	 * 
 	 */
-	public mianhuatang() {
+	public mianhuatang_la() {
 	}
 
 	/*

@@ -15,7 +15,7 @@ import com.iam_vip.v2.fn.site._site;
  */
 public class _23us_cc implements _site {
 
-	public static final String PREFIX = "http://www.23us.cc/";
+	public static final String PREFIX = "www.23us.cc/";
 
 	/**
 	 * 
@@ -23,31 +23,16 @@ public class _23us_cc implements _site {
 	public _23us_cc() {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.iam_vip.v2.fn.site._site#getName(org.jsoup.nodes.Document)
-	 */
 	@Override
 	public String getName(Document doc) {
 		return doc.getElementsByClass("btitle").get(0).getElementsByTag("span").first().text();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.iam_vip.v2.fn.site._site#get(org.jsoup.nodes.Document)
-	 */
 	@Override
 	public Elements get(Document doc) {
 		return doc.getElementsByClass("chapterlist").get(0).getElementsByTag("a");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.iam_vip.v2.fn.site._site#getDocHtml(org.jsoup.nodes.Document)
-	 */
 	@Override
 	public String getDocHtml(Document doc) {
 		Element novel = doc.getElementById("content");

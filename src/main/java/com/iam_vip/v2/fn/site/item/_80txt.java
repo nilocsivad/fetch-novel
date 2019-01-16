@@ -15,7 +15,7 @@ import com.iam_vip.v2.fn.site._site;
  */
 public class _80txt implements _site {
 
-	public static final String PREFIX = "http://www.80txt.com/";
+	public static final String PREFIX = "www.80txt.com/";
 
 	/**
 	 * 

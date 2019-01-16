@@ -15,7 +15,7 @@ import com.iam_vip.v2.fn.site._site;
  */
 public class sbkk8 implements _site {
 
-	public static final String PREFIX = "http://www.sbkk8.cn/";
+	public static final String PREFIX = "www.sbkk8.cn/";
 
 	/**
 	 * 
