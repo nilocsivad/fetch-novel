@@ -11,7 +11,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.iam_vip.IBrowserUserAgent;
-import com.iam_vip.v2.fn.site._site;
+import com.iam_vip.v2.fn.site.NovelSite;
 import com.iam_vip.v2.fn.site.item._00ksw_org;
 import com.iam_vip.v2.fn.site.item._136book;
 import com.iam_vip.v2.fn.site.item._23us;
@@ -108,20 +108,20 @@ public class FetchNovelApp {
 	
 	
 
-	private static _site getSite(String url) throws InstantiationException, IllegalAccessException {
+	private static NovelSite getSite(String url) throws InstantiationException, IllegalAccessException {
 		for (Map.Entry<String, Class<?>> itm : MAP.entrySet()) {
 			if (url.startsWith("http://" + itm.getKey()) || url.startsWith("https://" + itm.getKey())) {
-				return (_site) itm.getValue().newInstance();
+				return (NovelSite) itm.getValue().newInstance();
 			}
 		}
 		return null;
 	}
 
-	private static void write(String url, _site instance, BufferedWriter writer, int count) throws Exception {
+	private static void write(String url, NovelSite instance, BufferedWriter writer, int count) throws Exception {
 		try {
 			Document doc = instance.getDoc(url);
 
-			System.out.println("--> " + doc.baseUri() + " ==> " + doc.title());
+			System.out.printf("%s %n", doc.title());
 
 			StringBuffer buf = new StringBuffer();
 			buf.append(IBrowserUserAgent.START + "\r\n");
@@ -151,23 +151,30 @@ public class FetchNovelApp {
 	public static void doFetch(String url, int start) throws Exception {
 
 		if (!url.startsWith("http:") && !url.startsWith("https:")) {
+			System.err.println("\"" + url + "\"" + " is not a complete URL address.");
 			return;
 		}
+		
+		System.out.println("Load \"" + url + "\"");
 
 		int group = 100, add = 100000;
 
-		_site instance = getSite(url);
-		if (instance == null)
+		NovelSite instance = getSite(url);
+		if (instance == null) {
+			System.err.println("\"" + url + "\"" + ", there is no parser for this URL.");
 			return;
+		}
 
 		String folder = (System.getProperty("os.name").contains("Windows")) ? "D:\\novel" : (System.getProperty("user.home") + "/novel/");
 
 		Document doc = instance.getDoc(url);
 		String title = instance.getName(doc);
 
-		File _fol = new File(folder, title);
-		if (!_fol.exists())
-			_fol.mkdirs();
+		File dir = new File(folder, title);
+		if (!dir.exists())
+			dir.mkdirs();
+		
+		System.out.println("Create directory: " + dir.getAbsolutePath());
 
 		Elements elements = instance.get(doc);
 
@@ -182,9 +189,11 @@ public class FetchNovelApp {
 				if (x >= group && writer != null)
 					writer.close();
 
-				txtFile = new File(_fol, title + "." + (add + x + 1) + "-" + (add + x + group) + ".txt");
+				txtFile = new File(dir, title + "." + (add + x + 1) + "-" + (add + x + group) + ".txt");
 				writer = new BufferedWriter(new FileWriter(txtFile));
 			}
+
+			System.out.printf("%s %4d/%d ==> ", href, i, l);
 
 			write(href, instance, writer, 1);
 

@@ -7,13 +7,13 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.iam_vip.v2.fn.site._site;
+import com.iam_vip.v2.fn.site.NovelSite;
 
 /**
  * @author Colin
  *
  */
-public class _00ksw_org implements _site {
+public class _00ksw_org implements NovelSite {
 
 	public static final String PREFIX = "http://www.00ksw.org/";
 

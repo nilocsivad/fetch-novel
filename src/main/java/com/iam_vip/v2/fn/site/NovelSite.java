@@ -16,7 +16,7 @@ import com.iam_vip.IBrowserUserAgent;
  * @author Colin
  *
  */
-public interface _site extends IBrowserUserAgent {
+public interface NovelSite extends IBrowserUserAgent {
 
 	default Document getDoc(String url) throws IOException {
 		int idx = new Random().nextInt(ArrUserAgent.length);
