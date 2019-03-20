@@ -125,7 +125,7 @@ public class ReadNovelTxt2Velocity {
 				list.add(ChainNovel.START);
 				list.add(ChainNovel.START);
 				list.add(ChainNovel.START);
-				list.add(title);
+				list.add("<span class='title-h3'>" + title + "</span>");
 				list.add(reader.readLine());
 
 				line = reader.readLine();

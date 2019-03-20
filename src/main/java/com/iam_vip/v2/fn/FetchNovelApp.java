@@ -177,6 +177,8 @@ public class FetchNovelApp {
 		System.out.println("Create directory: " + dir.getAbsolutePath());
 
 		Elements elements = instance.get(doc);
+		
+		System.out.println("There are " + elements.size() + " articles.");
 
 		BufferedWriter writer = null;
 		File txtFile = null;
