@@ -7,15 +7,15 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.iam_vip.v2.fn.site._site;
+import com.iam_vip.v2.fn.site.NovelSite;
 
 /**
  * @author Colin
  *
  */
-public class sbkk8 implements _site {
+public class sbkk8 implements NovelSite {
 
-	public static final String PREFIX = "http://www.sbkk8.cn/";
+	public static final String PREFIX = "www.sbkk8.cn/";
 
 	/**
 	 * 

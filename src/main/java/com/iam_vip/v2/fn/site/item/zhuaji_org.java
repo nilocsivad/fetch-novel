@@ -7,15 +7,15 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.iam_vip.v2.fn.site._site;
+import com.iam_vip.v2.fn.site.NovelSite;
 
 /**
  * @author Colin
  *
  */
-public class zhuaji_org implements _site {
+public class zhuaji_org implements NovelSite {
 
-	public static final String PREFIX = "http://www.zhuaji.org/";
+	public static final String PREFIX = "www.zhuaji.org/";
 
 	/**
 	 * 
@@ -23,31 +23,16 @@ public class zhuaji_org implements _site {
 	public zhuaji_org() {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.iam_vip.v2.fn.site._site#getName(org.jsoup.nodes.Document)
-	 */
 	@Override
 	public String getName(Document doc) {
 		return doc.getElementsByClass("mulu_bookinfo").get(0).getElementsByTag("h1").get(0).text();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.iam_vip.v2.fn.site._site#get(org.jsoup.nodes.Document)
-	 */
 	@Override
 	public Elements get(Document doc) {
 		return doc.getElementById("mulu").getElementsByTag("a");
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.iam_vip.v2.fn.site._site#getDocHtml(org.jsoup.nodes.Document)
-	 */
 	@Override
 	public String getDocHtml(Document doc) {
 		Element novel = doc.getElementById("content");

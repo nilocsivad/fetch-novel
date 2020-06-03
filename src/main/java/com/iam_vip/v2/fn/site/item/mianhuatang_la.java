@@ -7,20 +7,20 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.iam_vip.v2.fn.site._site;
+import com.iam_vip.v2.fn.site.NovelSite;
 
 /**
  * @author Colin
  *
  */
-public class mianhuatang implements _site {
+public class mianhuatang_la implements NovelSite {
 
-	public static final String PREFIX = "http://www.mianhuatang.la/";
+	public static final String PREFIX = "www.mianhuatang.la/";
 
 	/**
 	 * 
 	 */
-	public mianhuatang() {
+	public mianhuatang_la() {
 	}
 
 	/*
