@@ -4,23 +4,21 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.iam_vip.v2.fn.site._site;
+public class biquku_la extends _23us_cc {
 
-public class _23us_cc implements _site {
+	public static final String PREFIX = "http://www.biquku.la/";
 
-	public static final String PREFIX = "http://www.23us.cc/";
-
-	public _23us_cc() {
+	public biquku_la() {
 	}
 
 	@Override
 	public String getName(Document doc) {
-		return doc.getElementsByClass("btitle").get(0).getElementsByTag("span").first().text();
+		return doc.getElementById("info").getElementsByTag("h1").get(0).text();
 	}
 
 	@Override
 	public Elements get(Document doc) {
-		return doc.getElementsByClass("chapterlist").get(0).getElementsByTag("a");
+		return doc.getElementsByClass("list").get(0).getElementsByTag("a");
 	}
 
 	@Override
@@ -32,6 +30,18 @@ public class _23us_cc implements _site {
 		buffer = new StringBuffer(buffer.toString().replace("<br/>", ""));
 		buffer = new StringBuffer(buffer.toString().replace("<br>", ""));
 		return buffer.toString();
+	}
+
+	@Override
+	public String next(Document doc) {
+		Elements tags = doc.getElementsByClass("bottem2").get(0).getElementsByTag("a");
+		StringBuilder buf = new StringBuilder();
+		tags.forEach(t -> {
+			if (t.text().indexOf("下一章") >= 0) {
+				buf.append(t.absUrl("href"));
+			}
+		});
+		return buf.toString();
 	}
 
 }

@@ -24,17 +24,21 @@ public interface _site extends IBrowserUserAgent {
 		return Jsoup.connect(url).header("Referer", url).header("User-Agent", agent).timeout(1000 * 60 * 3).get();
 	}
 
-	String getName(Document doc);
-
 	default String getDocHtml(String url) throws IOException {
 		return getDoc(url).html();
 	}
 
-	String getDocHtml(Document doc);
-
 	default Elements get(String url) throws IOException {
 		return get(getDoc(url));
 	}
+	
+	default String next(Document doc) {
+		return null;
+	}
+
+	String getDocHtml(Document doc);
+
+	String getName(Document doc);
 
 	Elements get(Document doc);
 

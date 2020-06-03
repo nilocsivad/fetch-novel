@@ -46,7 +46,7 @@ public class ReadNovelTxt2Velocity {
 
 		// readFile2("D:\\Novel\\", 5);
 
-		readFolder2("", 5); /// 十万个为什么 ///
+		readFolder2("", 5); /// D:\\十万个为什么   
 
 		// String folder = ""; /// D:\\十万个为什么 ///
 		// for (File f : new File(folder).listFiles())
@@ -148,43 +148,24 @@ public class ReadNovelTxt2Velocity {
 	}
 
 	protected static void readFolder2(String folder, int len) throws Exception {
-		boolean isWin = System.getProperty("os.name").contains("Windows");
-		String parentFolder = isWin ? "D:\\Novel" : System.getProperty("user.home") + "/Novel/";
-		readFolder2(parentFolder, folder, len);
-	}
-
-	protected static void readFolder2(String parentFolder, String folder, int len) throws Exception {
-
-		File[] files = new File(parentFolder, folder).listFiles(new FilenameFilter() {
+		File[] files = new File(folder).listFiles(new FilenameFilter() {
 			@Override
 			public boolean accept(File dir, String name) {
 				return name.endsWith(".txt");
 			}
 		});
-
 		if (files != null && files.length > 0) {
-
 			List<File> list = Arrays.asList(files);
 			Collections.sort(list, new Comparator<File>() {
 				public int compare(File o1, File o2) {
-					if (o1.getName().matches("/^\\d+\\.txt$/") == false) {
-						return o1.getName().compareTo(o2.getName());
-					}
-					else {
-						int n1 = Integer.parseInt(o1.getName().substring(0, 10));
-						int n2 = Integer.parseInt(o2.getName().substring(0, 10));
-						return n1 - n2;
-					}
+					return o1.getName().compareTo(o2.getName());
 				}
 			});
-
 			for (File txtFile : files) {
+				System.out.println(txtFile.getAbsolutePath());
 				readFile2(txtFile, len);
-				// System.out.println(txtFile.getAbsolutePath());
 			}
-
 		}
-
 	}
 
 }
