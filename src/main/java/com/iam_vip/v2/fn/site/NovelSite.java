@@ -23,6 +23,12 @@ public interface NovelSite extends IBrowserUserAgent {
 		String agent = ArrUserAgent[idx];
 		return Jsoup.connect(url).header("Referer", url).header("User-Agent", agent).timeout(1000 * 60 * 3).get();
 	}
+	
+	default Document getDocNoTLS(String url) throws IOException {
+		int idx = new Random().nextInt(ArrUserAgent.length);
+		String agent = ArrUserAgent[idx];
+		return Jsoup.connect(url).validateTLSCertificates(false).header("Referer", url).header("User-Agent", agent).timeout(1000 * 60 * 3).get();
+	}
 
 	String getName(Document doc);
 
