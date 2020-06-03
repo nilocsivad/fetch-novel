@@ -12,7 +12,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.iam_vip.IBrowserUserAgent;
-import com.iam_vip.v2.fn.site._site;
+import com.iam_vip.v2.fn.site.NovelSite;
 import com.iam_vip.v2.fn.site.item._00ksw_org;
 import com.iam_vip.v2.fn.site.item._136book;
 import com.iam_vip.v2.fn.site.item._23us;
@@ -26,10 +26,9 @@ import com.iam_vip.v2.fn.site.item.biquge_tw;
 import com.iam_vip.v2.fn.site.item.biqugegebook;
 import com.iam_vip.v2.fn.site.item.biquku_la;
 import com.iam_vip.v2.fn.site.item.biqule;
-import com.iam_vip.v2.fn.site.item.mianhuatang;
+import com.iam_vip.v2.fn.site.item.mianhuatang_la;
 import com.iam_vip.v2.fn.site.item.sbkk8;
 import com.iam_vip.v2.fn.site.item.tszww;
-import com.iam_vip.v2.fn.site.item.x23us;
 import com.iam_vip.v2.fn.site.item.xbiquge6;
 import com.iam_vip.v2.fn.site.item.xxbiquge;
 import com.iam_vip.v2.fn.site.item.zhuaji_org;
@@ -69,7 +68,7 @@ public class FetchNovelApp {
 		if (!dir.exists() || link == null || "".equals(link.trim())) {
 			return;
 		}
-		_site instance = getSite(link);
+		NovelSite instance = getSite(link);
 		if (instance == null) {
 			return;
 		}
@@ -131,27 +130,30 @@ public class FetchNovelApp {
 		map.put(biqugegebook.PREFIX, biqugegebook.class);
 		map.put(biquku_la.PREFIX, biquku_la.class);
 		map.put(biqule.PREFIX, biqule.class);
-		map.put(mianhuatang.PREFIX, mianhuatang.class);
+		map.put(mianhuatang_la.PREFIX, mianhuatang_la.class);
 		map.put(sbkk8.PREFIX, sbkk8.class);
 		map.put(tszww.PREFIX, tszww.class);
 		map.put(zhuaji_org.PREFIX, zhuaji_org.class);
 	}
+	
+	
+	
 
-	static _site getSite(String url) throws InstantiationException, IllegalAccessException {
+	private static NovelSite getSite(String url) throws InstantiationException, IllegalAccessException {
 		for (Map.Entry<String, Class<?>> itm : map.entrySet()) {
-			if (url.startsWith(itm.getKey())) {
-				return (_site) itm.getValue().newInstance();
+			if (url.startsWith("http://" + itm.getKey()) || url.startsWith("https://" + itm.getKey())) {
+				return (NovelSite) itm.getValue().newInstance();
 			}
 		}
 		return null;
 	}
 	
-	static void write(String url, _site instance, BufferedWriter writer, int count) throws Exception {
+	static void write(String url, NovelSite instance, BufferedWriter writer, int count) throws Exception {
 		Document doc = instance.getDoc(url);
 		write(doc, instance, writer, count);
 	}
 
-	static void write(Document doc, _site instance, BufferedWriter writer, int count) throws Exception {
+	static void write(Document doc, NovelSite instance, BufferedWriter writer, int count) throws Exception {
 		try {
 			System.out.println("--> " + doc.baseUri() + " ==> " + doc.title());
 			StringBuffer buf = new StringBuffer();
@@ -175,20 +177,32 @@ public class FetchNovelApp {
 	}
 
 	public static void doFetch(String url) throws Exception {
+		doFetch(url, 0);
+	}
+	
+	public static void doFetch(String url, int start) throws Exception {
 		if (!url.startsWith("http:") && !url.startsWith("https:")) {
+			System.err.println("\"" + url + "\"" + " is not a complete URL address.");
 			return;
 		}
-		int group = 100, add = 100000, start = 0;
-		_site instance = getSite(url);
-		if (instance == null)
+		int group = 100, add = 100000;
+		NovelSite instance = getSite(url);
+		if (instance == null) {
+			System.err.println("\"" + url + "\"" + ", there is no parser for this URL.");
 			return;
+		}
+
 		String folder = (System.getProperty("os.name").contains("Windows")) ? "D:\\novel" : (System.getProperty("user.home") + "/novel/");
 		Document doc = instance.getDoc(url);
 		String title = instance.getName(doc);
-		File _fol = new File(folder, title);
-		if (!_fol.exists())
-			_fol.mkdirs();
+		File dir = new File(folder, title);
+		if (!dir.exists())
+			dir.mkdirs();
+		System.out.println("Create directory: " + dir.getAbsolutePath());
+
 		Elements elements = instance.get(doc);
+		System.out.println("There are " + elements.size() + " articles.");
+
 		BufferedWriter writer = null;
 		File txtFile = null;
 		for (int i = start, x = 0, l = elements.size(); l > i; ++i, ++x) {
@@ -197,9 +211,10 @@ public class FetchNovelApp {
 			if (x % group == 0) {
 				if (x >= group && writer != null)
 					writer.close();
-				txtFile = new File(_fol, title + "." + (add + x + 1) + "-" + (add + x + group) + ".txt");
+				txtFile = new File(dir, title + "." + (add + x + 1) + "-" + (add + x + group) + ".txt");
 				writer = new BufferedWriter(new FileWriter(txtFile));
 			}
+			System.out.printf("%s %4d/%d ==> ", href, i, l);
 			write(href, instance, writer, 1);
 			Thread.sleep(50);
 		}

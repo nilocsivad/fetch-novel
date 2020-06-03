@@ -6,15 +6,11 @@ import org.jsoup.select.Elements;
 
 import com.iam_vip.v2.fn.site.NovelSite;
 
-<<<<<<< HEAD
-public class _23us_cc implements _site {
-=======
 /**
  * @author Colin
  *
  */
 public class _23us_cc implements NovelSite {
->>>>>>> branch 'master' of https://github.com/nilocsivad/fetch-novel
 
 	public static final String PREFIX = "www.23us.cc/";
 

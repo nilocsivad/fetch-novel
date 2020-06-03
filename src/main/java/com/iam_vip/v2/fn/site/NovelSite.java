@@ -44,4 +44,8 @@ public interface NovelSite extends IBrowserUserAgent {
 
 	Elements get(Document doc);
 
+	default String next(Document doc) {
+		return null;
+	}
+
 }
