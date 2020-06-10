@@ -23,6 +23,6 @@ target/
 
 build/
 /build/
-/.classpath
+.classpath
 
 org.eclipse.jdt.core.prefs
